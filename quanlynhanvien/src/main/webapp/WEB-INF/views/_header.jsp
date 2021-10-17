@@ -10,13 +10,13 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" >
   <div class="container-fluid">
     <div class="navbar-header">
-        <a href="#" class="navbar-brand" style="color: lightgrey; font-size: 30px">HRM</a>
+        <a href="#" class="navbar-brand" style="color: lightgrey; font-size: 30px">MP</a>
     </div>
       
     <ul class="nav navbar-nav">
         <li class="active"><a href="${pageContext.request.contextPath}/">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/thongTinNV?maNV=${loginedUser.maNV}">Thông tin nhân viên</a></li>
-        <li><a href="${pageContext.request.contextPath}/viecDuocGiao">Việc được giao</a></li>
+        <li><a href="${pageContext.request.contextPath}/viecDuocGiao">Việc được giao <span class="badge">${soluong}</span></a></li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Danh sách <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="${pageContext.request.contextPath}/danhSachNV">Nhân viên</a></li>

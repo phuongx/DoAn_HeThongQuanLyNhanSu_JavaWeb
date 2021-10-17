@@ -75,6 +75,11 @@ public class StorageUtils {
         cookieUserName.setMaxAge(0);
         response.addCookie(cookieUserName);
     }
+    // Lưu trữ thông tin soluong vào Session.
+    public static void storeSoluong(HttpSession session, int number) {
+        // Trên JSP có thể truy cập thông qua ${loginedUser}
+        session.setAttribute("soluong", number);
+    }
     
     
 }

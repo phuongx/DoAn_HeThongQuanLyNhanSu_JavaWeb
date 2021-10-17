@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mp.quanlynhanvien.filter;
 
 
+import com.mp.quanlynhanvien.beans.CongViec;
 import java.io.IOException;
 
 import java.sql.Connection;
@@ -23,6 +20,8 @@ import com.mp.quanlynhanvien.beans.UserAccount;
 
 import com.mp.quanlynhanvien.utils.StorageUtils;
 import com.mp.quanlynhanvien.utils.DBUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -45,21 +44,28 @@ public class CookieFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession();
- 
+        // Connection đã được tạo trong JDBCFilter.
+        Connection conn = StorageUtils.getStoredConnection(request);
+        
         UserAccount userInSession = StorageUtils.getLoginedUser(session);
+        List<CongViec> list1 = new ArrayList<CongViec>();
         // 
         if (userInSession != null) {
+            try {
+                list1 = DBUtils.getCongViec(conn, userInSession.getMaNV(), "Chua hoan thanh");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            StorageUtils.storeSoluong(session, list1.size());
             session.setAttribute("COOKIE_CHECKED", "CHECKED");
             chain.doFilter(request, response);
             return;
         }
- 
-        // Connection đã được tạo trong JDBCFilter.
-        Connection conn = StorageUtils.getStoredConnection(request);
         
  
         // Cờ (flag) để kiểm tra Cookie.
         String checked = (String) session.getAttribute("COOKIE_CHECKED");
+        
         if (checked == null && conn != null) {
             String userName = StorageUtils.getUserNameInCookie(req);
             try {

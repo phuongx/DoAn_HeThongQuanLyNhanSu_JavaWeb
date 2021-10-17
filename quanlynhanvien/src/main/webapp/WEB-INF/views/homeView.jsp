@@ -18,20 +18,17 @@
         <c:if test="${empty loginedUser}"><jsp:include page="_headerHome.jsp"></jsp:include></c:if>
         <c:if test="${not empty loginedUser}"><jsp:include page="_header.jsp"></jsp:include></c:if>
         <div class="row">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-9">
-                <h3>Home Page</h3>
-                He thong quan ly nhan vien <br><br>
-                <b>It includes the following functions:</b>
-                <ul>
-                   <li>Login</li>
-                   <li>Storing user information in cookies</li>
-                   <li>Cac chuc nang danh co nguoi quan ly</li>
-                   <li>Cac chuc nang danh cho nhan vien</li>
-
-                </ul>
+            <div class="col-lg-3">
+                Tuyển dụng
+            </div>
+            <div class="col-lg-6">
+                Tin Tức
+            </div>
+            <div class="col-lg-3">
+                Sự kiện
             </div>
         </div>
+        
 
         <jsp:include page="_footer.jsp"></jsp:include>
 

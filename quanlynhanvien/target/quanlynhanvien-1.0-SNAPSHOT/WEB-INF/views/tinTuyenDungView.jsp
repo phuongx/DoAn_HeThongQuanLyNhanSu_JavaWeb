@@ -1,6 +1,6 @@
 <%-- 
-    Document   : homeView
-    Created on : Aug 7, 2021, 11:03:23 PM
+    Document   : tinTuyenDungView
+    Created on : Oct 10, 2021, 10:02:57 PM
     Author     : Ms Phuong
 --%>
 
@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home Page</title>
+        <title>Tuyển dụng</title>
         <jsp:include page="_htmlHead.jsp"></jsp:include>
 
     </head>

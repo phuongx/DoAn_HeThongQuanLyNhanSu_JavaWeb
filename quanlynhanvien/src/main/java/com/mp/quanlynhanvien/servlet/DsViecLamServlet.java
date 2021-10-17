@@ -43,8 +43,10 @@ public class DsViecLamServlet extends HttpServlet {
         }
         System.out.println(trangthai);
         List<CongViec> list = new ArrayList<CongViec>();
+       
         try {
             list = DBUtils.getCongViec(conn, loginedUser.getMaNV(), trangthai);
+            
         } catch (SQLException e){
             e.printStackTrace();
             errorString = "Loi xu ly du lieu.";
