@@ -104,12 +104,20 @@
         <servlet-name>DangTinTuyenDungServlet</servlet-name>
         <servlet-class>com.mp.quanlynhanvien.servlet.DangTinTuyenDungServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>timTheoTenServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.timTheoTenServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.ChangePasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>home</welcome-file>
+        <welcome-file>login</welcome-file>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     <servlet-mapping>
@@ -195,6 +203,14 @@
     <servlet-mapping>
         <servlet-name>DangTinTuyenDungServlet</servlet-name>
         <url-pattern>/dangTinTuyenDung</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>timTheoTenServlet</servlet-name>
+        <url-pattern>/timTheoTen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/changePassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,6 +5,7 @@ com\mp\quanlynhanvien\beans\TinTuyenDung.class
 com\mp\quanlynhanvien\beans\TrangThai.class
 com\mp\quanlynhanvien\beans\PhongBan.class
 com\mp\quanlynhanvien\servlet\ViecDuocGiaoServlet.class
+com\mp\quanlynhanvien\servlet\ChangePasswordServlet.class
 com\mp\quanlynhanvien\beans\ViTri.class
 com\mp\quanlynhanvien\servlet\DsViecLamServlet.class
 com\mp\quanlynhanvien\beans\NVThoiViec.class
@@ -27,6 +28,7 @@ com\mp\quanlynhanvien\beans\UserAccount.class
 com\mp\quanlynhanvien\beans\ViPham.class
 com\mp\quanlynhanvien\servlet\AddPhongBanServlet.class
 com\mp\quanlynhanvien\servlet\Servletxxxx.class
+com\mp\quanlynhanvien\servlet\timTheoTenServlet.class
 com\mp\quanlynhanvien\servlet\DangTinTuyenDungServlet.class
 com\mp\quanlynhanvien\utils\DBUtils.class
 com\mp\quanlynhanvien\servlet\DanhDauHT_CVServlet.class

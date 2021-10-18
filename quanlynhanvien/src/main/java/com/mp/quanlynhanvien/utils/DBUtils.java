@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Calendar;
 import com.mp.quanlynhanvien.beans.UserAccount;
 import com.mp.quanlynhanvien.beans.PhongBan;
 import com.mp.quanlynhanvien.beans.ViTri;
@@ -94,6 +93,42 @@ public class DBUtils {
             return user;
         }
         return null;
+    }
+    
+    public static List<UserAccount> findUsers(Connection conn, String name, String trangthai) throws SQLException {
+        
+        String sql = null ;
+        if (trangthai.equals("Tat ca"))
+            sql = "Select * from user_account where hoten like '%"+name+"%'";
+        else if (trangthai.equals("Hoat dong"))
+            sql = "Select * from user_account where ten_tt = 'Hoat dong' and hoten like '%"+name+"%'";
+        else sql = "Select * from user_account where ten_tt = 'Thoi viec' and hoten like '%"+name+"%'";
+ 
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        ResultSet rs = pstm.executeQuery();
+        List <UserAccount> list = new ArrayList<UserAccount>();
+        while (rs.next()) {
+            String maNV = rs.getString("ma_nv");
+            String password = rs.getString("password");
+            String hoten = rs.getString("hoten");
+            String cmnd = rs.getString("cmnd");
+            String email = rs.getString("email");
+            String gioitinh = rs.getString("gioitinh");
+            String diachi = rs.getString("diachi");
+            String hinhanh = rs.getString("hinhanh");
+            String tenPB = rs.getString("ten_pb");
+            String tenVT = rs.getString("ten_vt");
+            String ngayBD = rs.getString("ngay_bd");
+            String tenTT = rs.getString("ten_tt");
+            String ghichu = rs.getString("ghichu");
+            
+            
+            
+            UserAccount user = new UserAccount(maNV,password,hoten,cmnd,email,gioitinh,diachi,hinhanh,
+                                    tenPB,tenVT,ngayBD,tenTT,ghichu);
+            list.add(user);
+        }
+        return list;
     }
     
     public static List<ThanhTich> findThanhTich(Connection conn, String maNV) throws SQLException{
@@ -590,5 +625,12 @@ public class DBUtils {
         pstm.executeUpdate();
 
     }
-    
+    public static void changePassword(Connection conn, String maNV, String newPass) throws SQLException {
+        String sql = "Update user_account set password=? where ma_nv=? ";
+ 
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, newPass);
+        pstm.setString(2, maNV);
+        pstm.executeUpdate();
+    }
 }

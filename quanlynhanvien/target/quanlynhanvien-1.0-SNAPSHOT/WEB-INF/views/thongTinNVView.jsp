@@ -80,6 +80,7 @@
                     <td>${user.ghichu } </td>
                 </tr>
             </table>
+                <hr>
             <table class="table table-striped">
                 <tr>
                     <th colspan="2">THÀNH TÍCH TIÊU BIỂU</th>
@@ -95,6 +96,7 @@
                     </tr>
                 </c:forEach>
             </table>
+                <hr>
             <table class="table table-striped">
                 <tr>
                     <th colspan="2">VI PHẠM</th>

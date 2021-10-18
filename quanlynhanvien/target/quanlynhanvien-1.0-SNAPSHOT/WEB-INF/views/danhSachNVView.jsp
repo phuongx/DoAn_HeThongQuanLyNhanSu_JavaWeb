@@ -19,15 +19,41 @@
                     window.location.replace("${pageContext.request.contextPath}/addNVTV?maNV="+maNV);
                 } 
             }
-         </script>
+            var request;
+            function TimTheoTen(ten) {
+                var trangthai = document.frmLoc.trangthai.value;
+                var url = "${pageContext.request.contextPath}/timTheoTen?ten=" + ten +"&trangthai="+trangthai;
+
+                if (window.XMLHttpRequest) {
+                    request = new XMLHttpRequest();
+                } else if (window.ActiveXObject) {
+                    request = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                try {
+                    request.onreadystatechange = getInfo;
+                    request.open("GET", url, true);
+                    request.send();
+                } catch (e) {
+                    alert("Unable to connect to server");
+                }
+            }
+
+            function getInfo() {
+                if (request.readyState == 4) {
+                 var val = request.responseText;
+                 document.getElementById('result').innerHTML = val;
+                }
+            }
+        </script>
     </head>
     <body>
         <jsp:include page="_header.jsp"></jsp:include>
         <p style="color: red;">${errorString}</p>
         
-        <form action="${pageContext.request.contextPath }/danhSachNV" method="get">
-            <div class="col-lg-4"></div>
-            <div class="form-group col-lg-4" >
+        <form action="${pageContext.request.contextPath }/danhSachNV" method="get" name="frmLoc">
+            <div class="col-lg-9"></div>
+            <div class="form-group col-lg-3" >
                 <div class="input-group">
                     <select class="form-control" id="sel1" name="trangthai">
                         <option selected="selected" value="${trangthai}">${trangthai}</option>
@@ -40,8 +66,15 @@
                     </div>
                 </div>
             </div>  
-            <div class="col-lg-4"></div>
         </form>
+    <form name="TK">
+        <div class="col-lg-4"></div>
+        <div class="form-group col-lg-4" >
+            <input class="form-control" type="text" name ="ten" onkeyup="TimTheoTen(this.value)" placeholder="Nhập họ tên để tìm kiếm">
+        </div>
+        <div class="col-lg-4"></div>
+    </form>
+    <div id="result">    
     <form name="frm2">
         <table class="table table-striped" >
             <tr class="text-center">
@@ -51,7 +84,7 @@
                 <th>Giới tính</th>
                 <th>Phòng ban</th>
                 <th>Vị trí</th>
-                <th>Ghi chú</th>
+                
                 <th>Xem chi tiết</th>
                 <c:if test="${not empty role}">
                 <th>Chỉnh sửa</th>
@@ -72,7 +105,7 @@
                 <td>${values.gioitinh}</td>
                 <td>${values.tenPB}</td>
                 <td>${values.tenVT}</td>
-                <td>${values.ghichu}</td>
+                
                 <td class="text-center"><a href="thongTinNV?maNV=${values.maNV}">Xem</a></td>
                 <c:if test="${values.tenTT!='Thoi viec'}">
                     <c:if test="${not empty role}">
@@ -94,6 +127,7 @@
         </c:forEach>
         </table>
     </form>
+    </div> 
        <jsp:include page="_footer.jsp"></jsp:include>
     </body>
 </html>

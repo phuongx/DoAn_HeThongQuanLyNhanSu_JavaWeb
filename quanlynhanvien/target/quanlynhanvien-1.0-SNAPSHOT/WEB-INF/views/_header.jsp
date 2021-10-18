@@ -17,21 +17,18 @@
         <li class="active"><a href="${pageContext.request.contextPath}/">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/thongTinNV?maNV=${loginedUser.maNV}">Thông tin nhân viên</a></li>
         <li><a href="${pageContext.request.contextPath}/viecDuocGiao">Việc được giao <span class="badge">${soluong}</span></a></li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Danh sách <span class="caret"></span></a>
+        
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Quản lý <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="${pageContext.request.contextPath}/danhSachNV">Nhân viên</a></li>
                 <li><a href="${pageContext.request.contextPath}/danhSachNVTV">Nhân viên đã nghĩ</a></li>
                 <li><a href="${pageContext.request.contextPath}/dsPhongBan">Phòng ban</a></li>
-            </ul>
-        </li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">For Manager <span class="caret"></span></a>
-            <ul class="dropdown-menu">
                 <li><a href="${pageContext.request.contextPath}/giaoViec">Giao việc</a></li>
                 <li><a href="${pageContext.request.contextPath}/dsHSUT">Hồ sơ ứng viên</a></li>
-             
+                <li><a href="${pageContext.request.contextPath}/">Thống kê</a></li>
             </ul>
         </li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">For Admin <span class="caret"></span></a>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="${pageContext.request.contextPath}/addNV">Tạo tài khoản</a></li>
                 <li><a href="${pageContext.request.contextPath}/dsPhongBan">Thêm phòng ban</a></li>

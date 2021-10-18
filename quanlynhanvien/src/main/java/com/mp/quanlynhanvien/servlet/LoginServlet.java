@@ -103,12 +103,9 @@ public class LoginServlet extends HttpServlet {
                     StorageUtils.deleteUserCookie(response);
                 }
                 request.setAttribute("user", user);
-                // Redirect (Chuyển hướng) sang trang /userInfo.
-                response.sendRedirect(request.getContextPath() + "/home");
-            
+                // Redirect (Chuyển hướng) sang trang /viecDuocGiao.
+                response.sendRedirect(request.getContextPath() + "/viecDuocGiao");
  
-            
-            
         }
     }
 
