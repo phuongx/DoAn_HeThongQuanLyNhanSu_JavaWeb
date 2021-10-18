@@ -1,1 +1,1 @@
-java web with servlet jsp
+A simple management system written by Servlet and JSP in Java
