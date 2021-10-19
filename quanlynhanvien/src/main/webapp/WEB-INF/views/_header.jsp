@@ -15,7 +15,7 @@
       
     <ul class="nav navbar-nav">
         <li class="active"><a href="${pageContext.request.contextPath}/">Home</a></li>
-        <li><a href="${pageContext.request.contextPath}/thongTinNV?maNV=${loginedUser.maNV}">Thông tin nhân viên</a></li>
+        
         <li><a href="${pageContext.request.contextPath}/viecDuocGiao">Việc được giao <span class="badge">${soluong}</span></a></li>
         
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Quản lý <span class="caret"></span></a>

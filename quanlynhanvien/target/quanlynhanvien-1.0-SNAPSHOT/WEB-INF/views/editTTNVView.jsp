@@ -10,7 +10,7 @@
 <html>
     <head>
         
-        <title>Chinh sua thong tin</title>
+        <title>Chỉnh sửa thông tin</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <jsp:include page="_htmlHead.jsp"></jsp:include>
         <script>
@@ -78,9 +78,12 @@
                 
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="${pageContext.request.contextPath}/editTTNV?maNV=${user.maNV}">Chỉnh sửa thông tin</a></li>
-                    <li><c:if test="${loginedUser.tenVT=='Admin'}">
-                            <input type="button" value="Đổi mật khẩu" class="btn btn-primary" onclick="ChangePass()">
-                        </c:if></li>
+                    <c:if test="${loginedUser.tenVT=='Admin'}">
+                    <li><input type="button" value="Đổi mật khẩu" class="btn btn-primary" onclick="ChangePass()"></li>
+                    <li><input type="button" value="Thêm trình độ học vấn" class="btn btn-primary" onclick="ChangePass()"></li>
+                    <li><input type="button" value="Thêm trình độ Ngoại ngữ" class="btn btn-primary" onclick="ChangePass()"></li>
+                    </c:if>
+                    
                 </ul>
                 <br>
                 <span id="result">

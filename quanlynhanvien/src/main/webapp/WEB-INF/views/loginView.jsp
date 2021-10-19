@@ -17,8 +17,13 @@
  
     <c:if test="${empty loginedUser}"><jsp:include page="_headerHome.jsp"></jsp:include></c:if>
     <c:if test="${not empty loginedUser}"><jsp:include page="_header.jsp"></jsp:include></c:if>
-
+    <br>
+  
+  <div class="alert alert-info">
+      <p style="color: red;">${errorString}</p>
+      <br>
     <form class="form-horizontal" action="${pageContext.request.contextPath}/login" method="POST">
+        
       <div class="form-group">
         <label class="control-label col-lg-4" for="manv">Mã nhân viên</label>
         <div class="col-lg-4">
@@ -45,7 +50,8 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </div>
-    </form>   
+    </form>  
+    </div>
     <jsp:include page="_footer.jsp"></jsp:include>
  
   </body>
