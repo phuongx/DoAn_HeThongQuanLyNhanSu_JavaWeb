@@ -39,7 +39,7 @@ public class ThongTinNVServlet extends HttpServlet {
         String errorString = null;
         Connection conn = StorageUtils.getStoredConnection(request);
         if (loginedUser == null){
-            errorString = "Ban chua dang nhap.";
+            errorString = "Bạn chưa đăng nhập.";
             request.setAttribute("errorString", errorString);
             //response.sendRedirect(request.getContextPath()+"/login");
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/loginView.jsp");

@@ -23,6 +23,7 @@ import com.mp.quanlynhanvien.beans.TrangThai;
 import com.mp.quanlynhanvien.utils.DBUtils;
 import com.mp.quanlynhanvien.utils.StorageUtils;
 import com.mp.quanlynhanvien.utils.AutoFillUtils;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -38,22 +39,23 @@ public class AddNVServlet extends HttpServlet {
         //ktra dang nhap
         HttpSession session = request.getSession();
         UserAccount loginedUser = StorageUtils.getLoginedUser(session);
+        
         String errorString = null;
         
         errorString = request.getParameter("errorString");
         
         if (loginedUser == null){
-            errorString = "Ban chua dang nhap.";
+            errorString = "Bạn chưa đăng nhập.";
             request.setAttribute("errorString", errorString);
-            //response.sendRedirect(request.getContextPath()+"/login");
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/loginView.jsp");
             dispatcher.forward(request, response);
             return;
         }
         
         //ktra quyen: chi co admin
-        if (loginedUser.getTenVT().equals("Admin") == false ){
-            errorString = "Quyen truy cap that bai.";
+        int quyenUser = StorageUtils.getQuyenUser(session);
+        if (quyenUser == 2 ){
+            errorString = "Quyền truy cập thất bại..";
             request.setAttribute("errorString", errorString);
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/errorView.jsp");
             dispatcher.forward(request, response);
@@ -84,36 +86,30 @@ public class AddNVServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         
         String maNV = request.getParameter("maNV");
-        String password = request.getParameter("password");
+        String pass = request.getParameter("password");
         String hoten = request.getParameter("hoten");
         String cmnd = request.getParameter("cmnd")+"";
         String email = request.getParameter("email");
+        String sdt=null;
+        String ngaysinh=null;
         String gioitinh = request.getParameter("gioitinh");
         String diachi = request.getParameter("diachi");
         String tenPB = request.getParameter("tenPB");
         String tenVT = request.getParameter("tenVT");
-        String ngayBD = request.getParameter("ngayBD");
-        String ghichu = request.getParameter("ghichu");
-        
+        int quyen = 2;
         String hinhanh = null;
         String tenTT = "Hoat dong";
+        
+        String password = DigestUtils.sha256Hex(pass);
+        
         
         String errorString = null;
         Connection conn = StorageUtils.getStoredConnection(request);
         
-        /*
-        //ktra 
         
-        if (maNV.equals("") || password.equals("") || hoten.equals("") || gioitinh.equals("") ||
-                diachi.equals("") || ngayBD.equals("")){
-            errorString = "Can dien day du thong tin";
-            response.sendRedirect(request.getContextPath()+"/addNV?errorString="+errorString);
-            return;
-        }
-        */
         
-        UserAccount user = new UserAccount(maNV,password,hoten,cmnd,email,gioitinh,diachi,hinhanh,tenPB, tenVT,
-                                            ngayBD,tenTT,ghichu);
+        UserAccount user = new UserAccount(maNV,password,hoten,cmnd,email,sdt,ngaysinh,
+                gioitinh,diachi,tenPB, tenVT,tenTT,quyen);
         
         
         

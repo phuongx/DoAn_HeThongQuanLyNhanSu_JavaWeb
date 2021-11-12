@@ -11,7 +11,7 @@
 <html>
     <head>
        <jsp:include page="_htmlHead.jsp"></jsp:include>
-       <title>Error</title>
+       <title>MP - Lỗi </title>
     </head>
     <body>
 

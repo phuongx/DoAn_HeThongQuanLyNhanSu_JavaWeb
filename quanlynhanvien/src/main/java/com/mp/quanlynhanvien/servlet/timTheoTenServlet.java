@@ -15,6 +15,7 @@ import com.mp.quanlynhanvien.utils.StorageUtils;
 import com.mp.quanlynhanvien.utils.DBUtils;
 import java.sql.Connection;
 import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 public class timTheoTenServlet extends HttpServlet {
 
@@ -22,6 +23,8 @@ public class timTheoTenServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        String errorString1  = null;
+        
         //ktra dang nhap
         HttpSession session = request.getSession();
         UserAccount user = StorageUtils.getLoginedUser(session);
@@ -30,19 +33,19 @@ public class timTheoTenServlet extends HttpServlet {
             return;
         } 
         
-        // Ai cung co the truy cap
-        // Xac dinh pham vi co the thao tac voi du lieu 
-        String role = null;
-        if (user.getTenVT().equals("Admin") == true ||  
-                user.getTenVT().equals("Quan ly") == true){
-            role = "yes";
-            
+        //ktra quyen: chi co admin
+        int quyenUser = StorageUtils.getQuyenUser(session);
+        if (quyenUser == 2 ){
+            errorString1 = "Quyền truy cập thất bại..";
+            request.setAttribute("errorString", errorString1);
+            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/errorView.jsp");
+            dispatcher.forward(request, response);
+            return;
         }
-        request.setAttribute("role", role);
         
-        String errorString1  = null;
+        
         String ten = request.getParameter("ten");
-        String trangthai = request.getParameter("trangthai");
+        String trangthai = "Hoat dong";
         Connection conn = StorageUtils.getStoredConnection(request);
         List<UserAccount> list = new ArrayList<UserAccount>();
         try{
@@ -51,7 +54,7 @@ public class timTheoTenServlet extends HttpServlet {
             e.printStackTrace();
             errorString1 = "Loi.";
         }
-
+        request.setAttribute("sodong", list.size());
         request.setAttribute("list", list);
         request.setAttribute("errorString1", errorString1);
         request.getRequestDispatcher("/WEB-INF/views/timTheoTen.jsp").forward(request, response);

@@ -5,13 +5,14 @@ import com.mp.quanlynhanvien.beans.PhongBan;
 import com.mp.quanlynhanvien.beans.TrangThai;
 import com.mp.quanlynhanvien.beans.ViTri;
 import com.mp.quanlynhanvien.beans.HSUngTuyen;
+import com.mp.quanlynhanvien.beans.TinTuyenDung;
 import com.mp.quanlynhanvien.utils.AutoFillUtils;
 import com.mp.quanlynhanvien.utils.DBUtils;
 import com.mp.quanlynhanvien.utils.StorageUtils;
 import java.sql.Connection;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,12 +33,28 @@ public class UngTuyenServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         
+        String id = request.getParameter("id");
+        if (id==null){
+            id="1";
+        }
+        int maTin = Integer.parseInt(id);
+        
         Connection conn = StorageUtils.getStoredConnection(request);
         
         List<PhongBan> listPB = AutoFillUtils.getListPB(conn);
         List<ViTri> listVT = AutoFillUtils.getListVT(conn);
         List<TrangThai> listTT = AutoFillUtils.getListTT(conn);
-
+        
+        TinTuyenDung tin = new TinTuyenDung(); 
+        String errorString = null;
+        try {
+            tin = DBUtils.getTinTuyenDung(conn,maTin);
+        } catch (SQLException e){
+            e.printStackTrace();
+            errorString = "Lỗi lấy dữ liệu.";
+        }
+        request.setAttribute("tin", tin);
+        request.setAttribute("errorString", errorString);
         request.setAttribute("listPB",listPB);
         request.setAttribute("listVT",listVT);
         request.setAttribute("listTT",listTT);

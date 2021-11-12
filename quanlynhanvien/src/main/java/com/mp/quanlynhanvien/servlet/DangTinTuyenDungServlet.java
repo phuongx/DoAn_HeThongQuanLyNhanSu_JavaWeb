@@ -32,19 +32,18 @@ public class DangTinTuyenDungServlet extends HttpServlet {
         HttpSession session = request.getSession();
         UserAccount loginedUser = StorageUtils.getLoginedUser(session);
         String errorString = null;
-        
         if (loginedUser == null){
-            errorString = "Ban chua dang nhap.";
+            errorString = "Bạn chưa đăng nhập..";
             request.setAttribute("errorString", errorString);
-            //response.sendRedirect(request.getContextPath()+"/login");
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/loginView.jsp");
             dispatcher.forward(request, response);
             return;
         }
         
         //ktra quyen: chi co admin
-        if (loginedUser.getTenVT().equals("Admin") == false ){
-            errorString = "Quyen truy cap that bai.";
+        int quyenUser = StorageUtils.getQuyenUser(session);
+        if (quyenUser == 2 ){
+            errorString = "Quyền truy cập thất bại..";
             request.setAttribute("errorString", errorString);
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/errorView.jsp");
             dispatcher.forward(request, response);

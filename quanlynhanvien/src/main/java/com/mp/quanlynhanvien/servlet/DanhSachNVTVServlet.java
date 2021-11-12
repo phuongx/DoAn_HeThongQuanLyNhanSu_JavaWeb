@@ -63,6 +63,7 @@ public class DanhSachNVTVServlet extends HttpServlet {
         }
         
         //khong co loi
+        request.setAttribute("sodong", list.size());
         request.setAttribute("list", list);
         
         RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/danhSachNVTVView.jsp");

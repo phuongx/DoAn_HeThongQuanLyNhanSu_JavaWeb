@@ -27,7 +27,7 @@
     <body>
         <jsp:include page="_header.jsp"></jsp:include>
         <p style="color:red;">${errorString}</p>
-        <p><i style="color: red">Lưu ý: Cần điền đầy đủ các trường thông tin (*) bên dưới.</i></p>
+        
         <form class="form-horizontal" action="${pageContext.request.contextPath}/addThanhTich" method="POST" name="frmTT">
             <input type="hidden" name="maNV" value="${user.maNV}">
             <div class="form-group">

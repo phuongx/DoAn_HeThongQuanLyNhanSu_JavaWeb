@@ -14,7 +14,7 @@
 <body>
 
     <p style="color: red;">${errorString1}</p>
-
+    
     <c:if test="${empty errorString1}">
         <c:if test="${not empty user}">
             <p class="text-left"><b>Thông tin nhân viên:</b> </p>
@@ -34,7 +34,7 @@
             </table>
                 
             <div id="thongbao" style="color: red;"></div>
-            <p><i style="color: red">Lưu ý: Cần điền đầy đủ các trường thông tin (*) bên dưới.</i></p>
+           
             <form action="${pageContext.request.contextPath}/giaoViec" method="POST" name="frmGV" onsubmit="return KiemTra()" class="form-horizontal">
                 <input type="hidden" name="maNV" value="${user.maNV}">
                 <div class="form-group">

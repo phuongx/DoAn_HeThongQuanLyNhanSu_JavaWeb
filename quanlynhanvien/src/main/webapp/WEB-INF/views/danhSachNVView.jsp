@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Danh sach nhan vien</title>
+        <title>MP - Quản lý nhân sự</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <jsp:include page="_htmlHead.jsp"></jsp:include>
         <script>
@@ -21,8 +21,8 @@
             }
             var request;
             function TimTheoTen(ten) {
-                var trangthai = document.frmLoc.trangthai.value;
-                var url = "${pageContext.request.contextPath}/timTheoTen?ten=" + ten +"&trangthai="+trangthai;
+                
+                var url = "${pageContext.request.contextPath}/timTheoTen?ten=" + ten;
 
                 if (window.XMLHttpRequest) {
                     request = new XMLHttpRequest();
@@ -51,50 +51,32 @@
         <jsp:include page="_header.jsp"></jsp:include>
         <p style="color: red;">${errorString}</p>
         
-        <form action="${pageContext.request.contextPath }/danhSachNV" method="get" name="frmLoc">
-            <div class="col-lg-9"></div>
-            <div class="form-group col-lg-3" >
-                <div class="input-group">
-                    <select class="form-control" id="sel1" name="trangthai">
-                        <option selected="selected" value="${trangthai}">${trangthai}</option>
-                        <c:if test="${trangthai!='Hoat dong'}"><option value="Hoat dong" >Hoat dong</option></c:if>
-                        <c:if test="${trangthai!='Da nghi viec'}"><option value="Da nghi viec">Da nghi viec</option></c:if>
-                        <c:if test="${trangthai!='Tat ca'}"><option value="Tat ca" >Tat ca</option></c:if>
-                    </select>
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
-            </div>  
-        </form>
     <form name="TK">
+        <div class="row">
         <div class="col-lg-4"></div>
         <div class="form-group col-lg-4" >
             <input class="form-control" type="text" name ="ten" onkeyup="TimTheoTen(this.value)" placeholder="Nhập họ tên để tìm kiếm">
         </div>
         <div class="col-lg-4"></div>
+        </div>
     </form>
-    <div id="result">    
+    <div id="result">
+        <p>Danh sách này có <b style="color:blue">${sodong}</b> dòng.</p>
     <form name="frm2">
-        <table class="table table-striped" >
-            <tr class="text-center">
+        <table class="table table-striped " >
+            <tr class="info">
                 <th>Mã nhân viên</th>                
                 <th>Họ tên</th>
                 <th>Email</th>
+                <th>Số điện thoại</th>
                 <th>Giới tính</th>
                 <th>Phòng ban</th>
                 <th>Vị trí</th>
-                
                 <th>Xem chi tiết</th>
-                <c:if test="${not empty role}">
                 <th>Chỉnh sửa</th>
                 <th>Thêm thành tích</th>
                 <th>Thêm vi phạm</th>
-                </c:if>
-                <c:if test="${loginedUser.tenVT=='Admin'}">
                 <th>Thôi việc</th>  
-                </c:if>
-                
             </tr>
         <c:forEach items="${list}" var="values">
             <tr>
@@ -102,21 +84,16 @@
                 <td>${values.maNV}</td>
                 <td>${values.hoten}</td>
                 <td>${values.email}</td>
+                <td>${values.sdt}</td>
                 <td>${values.gioitinh}</td>
                 <td>${values.tenPB}</td>
                 <td>${values.tenVT}</td>
                 
                 <td class="text-center"><a href="thongTinNV?maNV=${values.maNV}">Xem</a></td>
-                <c:if test="${values.tenTT!='Thoi viec'}">
-                    <c:if test="${not empty role}">
-                    <td class="text-center"><a href="editTTNV?maNV=${values.maNV}">Sửa</a></td>
-                    <td class="text-center"><a href="addThanhTich?maNV=${values.maNV}">Thêm</a></td>
-                    <td class="text-center"><a href="addViPham?maNV=${values.maNV}">Thêm</a></td>  
-                    </c:if>
-                    <c:if test="${loginedUser.tenVT=='Admin'}">
-                    <td class="text-center"><input type="button" class="btn btn-danger" value="Đánh dấu" onclick="check_confirm(maNV${values.maNV}.value)"></td>  
-                    </c:if>
-                </c:if>
+                <td class="text-center"><a href="editTTNV?maNV=${values.maNV}">Sửa</a></td>
+                <td class="text-center"><a href="addThanhTich?maNV=${values.maNV}">Thêm</a></td>
+                <td class="text-center"><a href="addViPham?maNV=${values.maNV}">Thêm</a></td>  
+                <td class="text-center"><input type="button" class="btn btn-danger" value="Đánh dấu" onclick="check_confirm(maNV${values.maNV}.value)"></td>
                 <c:if test="${values.tenTT=='Thoi viec'}">
                     <td></td>
                     <td></td>

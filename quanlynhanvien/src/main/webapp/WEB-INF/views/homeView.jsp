@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home Page</title>
+        <title>MP - Quản lý nhân sự</title>
         <jsp:include page="_htmlHead.jsp"></jsp:include>
 
     </head>

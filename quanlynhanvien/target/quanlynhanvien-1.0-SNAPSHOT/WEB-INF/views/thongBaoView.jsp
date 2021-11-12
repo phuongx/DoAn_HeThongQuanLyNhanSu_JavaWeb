@@ -11,13 +11,14 @@
 <html>
     <head>
        <jsp:include page="_htmlHead.jsp"></jsp:include>
-       <title>Thong bao</title>
+       <title>MP - Quản lý nhân sự</title>
     </head>
     <body>
 
 
        <c:if test="${empty loginedUser}"><jsp:include page="_headerHome.jsp"></jsp:include></c:if>
-       <c:if test="${not empty loginedUser}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+        <c:if test="${quyen=='1'}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+        <c:if test="${quyen=='2'}"><jsp:include page="_headerNhanvien.jsp"></jsp:include></c:if>
 
         <h4 style="color:red;">${errorString}</h4>
         <div class="alert alert-success">

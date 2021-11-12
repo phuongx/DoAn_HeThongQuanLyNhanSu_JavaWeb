@@ -80,6 +80,12 @@ public class StorageUtils {
         // Trên JSP có thể truy cập thông qua ${loginedUser}
         session.setAttribute("soluong", number);
     }
-    
-    
+    public static void storeQuyen(HttpSession session, int number) {
+        // Trên JSP có thể truy cập thông qua ${loginedUser}
+        session.setAttribute("quyen", number);
+    }
+    public static int getQuyenUser(HttpSession session) {
+        int quyen = (int) session.getAttribute("quyen");
+        return quyen;
+    }
 }

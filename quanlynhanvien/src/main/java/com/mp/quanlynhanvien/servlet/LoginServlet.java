@@ -19,10 +19,9 @@ import com.mp.quanlynhanvien.beans.UserAccount;
 import com.mp.quanlynhanvien.utils.DBUtils;
 import com.mp.quanlynhanvien.utils.StorageUtils;
 import javax.servlet.http.HttpSession;
-/**
- *
- * @author Ms Phuong
- */
+import org.apache.commons.codec.digest.DigestUtils;
+import java.security.NoSuchAlgorithmException;
+
 public class LoginServlet extends HttpServlet {
 
     
@@ -41,10 +40,12 @@ public class LoginServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         
         String maNV = request.getParameter("maNV");
-        String password = request.getParameter("password");
+        String pass = request.getParameter("password");
         String rememberMeStr = request.getParameter("rememberMe");
         boolean remember = "Y".equals(rememberMeStr);
- 
+        
+        String password = DigestUtils.sha256Hex(pass);
+
         UserAccount user = null;
         boolean hasError = false;
         String errorString = null;
@@ -60,7 +61,7 @@ public class LoginServlet extends HttpServlet {
  
                 if (user == null) {
                     hasError = true;
-                    errorString = "User Name or password invalid";
+                    errorString = "Tên đăng nhập và mật khẩu không hợp lệ!";
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

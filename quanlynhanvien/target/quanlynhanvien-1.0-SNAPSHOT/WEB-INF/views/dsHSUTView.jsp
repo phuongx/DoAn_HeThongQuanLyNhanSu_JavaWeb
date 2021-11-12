@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ho so ung tuyen</title>
+        <title>MP - Ứng tuyển</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <jsp:include page="_htmlHead.jsp"></jsp:include>
         <script type="text/javascript">
@@ -67,6 +67,7 @@
         <jsp:include page="_header.jsp"></jsp:include>
         <p style="color: red;">${errorString}</p>
         <form id="Search" method="post">
+            <div class="row">
             <div class="col-lg-4"></div>
             <div class="form-group col-lg-4" >
                 <div class="input-group">
@@ -80,21 +81,23 @@
                         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
                 </div>
-            </div>  
+            </div>
             <div class="col-lg-4"></div>
+            </div>
         </form>
                   
         <span id="result">
+            <p>Danh sách này có <b style="color:blue">${sodong}</b> dòng.</p>
             <form name="frm1">
             <table class="table table-striped" >
-                <tr class="text-center">
+                <tr class="text-center info">
                     <th>Mã hồ sơ</th>                
                     <th>Họ tên ứng viên</th>
                     <th>Số điện thoại</th>
                     <th>Email</th>
                     <th>Vị trí ứng tuyển</th>
                     <th>Phòng ban ứng tuyển</th>
-                    <th>urlCV</th>
+                    <th>CV</th>
                 <c:if test="${trangthai!='Chua duyet'}">
                     <th>Kết quả</th>
                     <th>Ngày duyệt</th>
@@ -112,7 +115,7 @@
                     <td>${values.email}</td>
                     <td>${values.tenVT}</td>
                     <td>${values.tenPB}</td>
-                    <td>${values.urlCV}</td>
+                    <td><a href="file/cv/${values.urlCV}">Xem</a></td>
                 <c:if test="${trangthai!='Chua duyet'}">
                     <td>${values.ketqua}</td>
                     <td>${values.ngayduyet}</td>

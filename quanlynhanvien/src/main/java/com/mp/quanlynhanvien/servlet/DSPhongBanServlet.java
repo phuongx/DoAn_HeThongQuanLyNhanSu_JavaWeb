@@ -51,12 +51,12 @@ public class DSPhongBanServlet extends HttpServlet {
             e.printStackTrace();
             errorString = e.getMessage();
         }
-        
         // luu thong tin vao request
+        request.setAttribute("sodong", list.size());
         request.setAttribute("list", list);
         request.setAttribute("errorString", errorString);
         //chuyen huong
-        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/dsPhongBanView.jsp");
+        RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/dmPhongBanView.jsp");
         dispatcher.forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

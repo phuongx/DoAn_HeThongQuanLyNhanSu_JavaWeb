@@ -26,7 +26,7 @@ public class TimNVServlet extends HttpServlet {
         UserAccount user = new UserAccount();
         if (maNV.equals("")){
             
-            errorString1 = "Ban can dien ma so.";
+            errorString1 = "Bạn cần điền mã số.";
             request.setAttribute("errorString1", errorString1);
             request.getRequestDispatcher("/WEB-INF/views/timNVView.jsp").forward(request, response);
             return;
@@ -40,7 +40,7 @@ public class TimNVServlet extends HttpServlet {
             errorString1 = "Loi.";
         }
         if (user == null){
-            errorString1 = "Khong tim thay thong tin.";
+            errorString1 = "Không tìm thấy thông tin.";
         }
         request.setAttribute("user", user);
         request.setAttribute("errorString1", errorString1);

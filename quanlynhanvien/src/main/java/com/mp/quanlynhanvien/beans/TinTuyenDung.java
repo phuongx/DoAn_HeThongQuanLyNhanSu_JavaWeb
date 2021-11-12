@@ -39,6 +39,7 @@ public class TinTuyenDung implements Serializable {
     public String gettenVT(){
         return tenVT;
     }
+
     public int getSoluong(){
         return soluong;
     }
@@ -61,6 +62,7 @@ public class TinTuyenDung implements Serializable {
     public void setTenVT(String vitri){
         this.tenVT = vitri;
     }
+
     public void setSoluong(int soluong){
         this.soluong = soluong;
     }

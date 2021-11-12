@@ -35,19 +35,18 @@ public class AddPhongBanServlet extends HttpServlet {
         String errorString = null;
         
         if (loginedUser == null){
-            errorString = "Ban chua dang nhap.";
+            errorString = "Bạn chưa đăng nhập..";
             request.setAttribute("errorString", errorString);
-            
             request.getRequestDispatcher("/WEB-INF/views/loginView.jsp").forward(request, response);
             return;
         }
         
-        //ktra quyen: chi  admin moi co quyen truy cap
-        if (loginedUser.getTenVT().equals("Admin") == false ){
-            errorString = "Quyen truy cap that bai.";
+        //ktra quyen: chi co admin
+        int quyenUser = StorageUtils.getQuyenUser(session);
+        if (quyenUser == 2 ){
+            errorString = "Quyền truy cập thất bại..";
             request.setAttribute("errorString", errorString);
-            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/errorView.jsp");
-            dispatcher.forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/views/errorView.jsp").forward(request, response);
             return;
         }
         
@@ -72,17 +71,7 @@ public class AddPhongBanServlet extends HttpServlet {
         String maPB = request.getParameter("maPB");
         String tenPB = request.getParameter("tenPB");
         PhongBan phongban = new PhongBan(maPB, tenPB);
-        System.out.println(tenPB+"    "+ maPB);
-        //ktra du lieu
-        
-        if (maPB.equals("") || tenPB.equals("")){
-            errorString = "Cac truong du lieu trong";
-            request.setAttribute("errorString",errorString);
-            request.setAttribute("phongban", phongban);
-            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/addPhongBanView.jsp");
-            dispatcher.forward(request, response);
-        }
-        
+ 
         Connection conn = StorageUtils.getStoredConnection(request);
         
         
@@ -96,7 +85,7 @@ public class AddPhongBanServlet extends HttpServlet {
             
             request.setAttribute("errorString", errorString);
             request.setAttribute("phongban", phongban);
-            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/addPhongBanView.jsp");
+            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/dmPhongBanView.jsp");
             dispatcher.forward(request, response);
             return;
         }

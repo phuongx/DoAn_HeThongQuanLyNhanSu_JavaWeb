@@ -20,35 +20,35 @@ public class UserAccount implements Serializable {
     private String hoten;
     private String cmnd;
     private String email;
+    private String sdt;
+    private String ngaysinh;
     private String gioitinh;
     private String diachi;
-    private String hinhanh;
     private String tenPB;
     private String tenVT;
-    private String ngayBD;
     private String tenTT;
-    private String ghichu;
+    private int quyen;
     
     
     public UserAccount() {
         
     }
     public UserAccount(String maNV, String password, String hoten, String cmnd, 
-            String email, String gioitinh, String diachi, String hinhanh, 
-            String tenPB, String tenVT, String ngayBD, String tenTT, String ghichu) {
+            String email, String sdt, String ngaysinh, String gioitinh, String diachi,  
+            String tenPB, String tenVT,  String tenTT, int quyen) {
         this.maNV = maNV;
         this.password = password;
         this.hoten = hoten;
         this.cmnd = cmnd;
         this.email = email;
+        this.sdt = sdt;
+        this.ngaysinh = ngaysinh;
         this.gioitinh = gioitinh;
         this.diachi = diachi;
-        this.hinhanh = hinhanh;
         this.tenPB = tenPB;
         this.tenVT = tenVT;
-        this.ngayBD = ngayBD;
         this.tenTT = tenTT;
-        this.ghichu = ghichu;
+        this.quyen = quyen;
     }
     public UserAccount (UserAccount user){
         this.maNV = user.maNV;
@@ -56,14 +56,14 @@ public class UserAccount implements Serializable {
         this.hoten = user.hoten;
         this.cmnd = user.cmnd;
         this.email = user.email;
+        this.sdt = user.sdt;
+        this.ngaysinh = user.ngaysinh;
         this.gioitinh = user.gioitinh;
         this.diachi = user.diachi;
-        this.hinhanh = user.hinhanh;
         this.tenPB = user.tenPB;
         this.tenVT = user.tenVT;
-        this.ngayBD = user.ngayBD;
         this.tenTT = user.tenTT;
-        this.ghichu = user.ghichu;
+        this.quyen = user.quyen;
     }
     public String getMaNV() {
        return maNV;
@@ -101,6 +101,20 @@ public class UserAccount implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+    public String getNgaysinh() {
+        return ngaysinh;
+    }
+
+    public void setNgaysinh(String ngaysinh) {
+        this.ngaysinh = ngaysinh;
+    }
     public String getGioitinh() {
         return gioitinh;
     }
@@ -115,13 +129,7 @@ public class UserAccount implements Serializable {
     public void setDiachi(String diachi) {
         this.diachi = diachi;
     }
-    public String getHinhanh() {
-        return hinhanh;
-    }
 
-    public void setHinhanh(String hinhanh) {
-        this.hinhanh = hinhanh;
-    }
     public String getTenPB() {
         return tenPB;
     }
@@ -135,18 +143,12 @@ public class UserAccount implements Serializable {
     public void setTenVT(String tenVT) {
         this.tenVT = tenVT;
     }
-    public void setNgayBD(String ngayBD) {
-        this.ngayBD = ngayBD;
-    }
-    public String getNgayBD() {
-        return ngayBD;
-    }
 
-    public void setGhichu(String ghichu) {
-        this.ghichu = ghichu;
+    public void setQuyen(int quyen) {
+        this.quyen = quyen;
     }
-    public String getGhichu(){
-        return ghichu;
+    public int getQuyen(){
+        return quyen;
     }
     public String getTenTT() {
         return tenTT;
@@ -155,9 +157,5 @@ public class UserAccount implements Serializable {
     public void setTenTT(String tenTT) {
         this.tenTT = tenTT;
     }
-    
-    
-    
-    
-    
+
 }

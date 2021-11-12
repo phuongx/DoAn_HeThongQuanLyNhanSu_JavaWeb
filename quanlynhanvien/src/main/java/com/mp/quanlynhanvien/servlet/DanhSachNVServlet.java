@@ -33,42 +33,36 @@ public class DanhSachNVServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        
+        String errorString = null;
         //ktra dang nhap
         HttpSession session = request.getSession();
         UserAccount user = StorageUtils.getLoginedUser(session);
+       int quyenUser = StorageUtils.getQuyenUser(session);
         if (user == null){
             response.sendRedirect(request.getContextPath()+"/login");
             return;
         } 
         
-        // Ai cung co the truy cap
-        // Xac dinh pham vi co the thao tac voi du lieu 
-        String role = null;
-        if (user.getTenVT().equals("Admin") == true ||  
-                user.getTenVT().equals("Quan ly") == true){
-            role = "yes";
-            
+        //ktra quyen: chi co admin
+        if (quyenUser == 2 ){
+            errorString = "Quyền truy cập thất bại.";
+            request.setAttribute("errorString", errorString);
+            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/errorView.jsp");
+            dispatcher.forward(request, response);
+            return;
         }
-        request.setAttribute("role", role);
         
         // xu ly
-        String trangthai = null;
-        trangthai = request.getParameter("trangthai");
-        if (trangthai == null) trangthai = "Hoat dong";
-        System.out.println(trangthai);
         Connection conn = StorageUtils.getStoredConnection(request);
-        String errorString = null;
+
         List <UserAccount> list = new ArrayList<UserAccount>();
         try{
-            list = DBUtils.dsNhanVien(conn,trangthai);
+            list = DBUtils.dsNhanVien(conn);
         } catch (SQLException e){
             e.printStackTrace();
             errorString = e.getMessage();
         }
-        
-        // luu thong tin vao request
-        request.setAttribute("trangthai", trangthai);
+        request.setAttribute("sodong", list.size());
         request.setAttribute("list", list);
         request.setAttribute("errorString", errorString);
         //chuyen huong

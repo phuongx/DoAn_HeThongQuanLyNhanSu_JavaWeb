@@ -10,7 +10,7 @@
 <html>
     <head>
         
-        <title>Chỉnh sửa thông tin</title>
+        <title>MP - Chỉnh sửa thông tin</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <jsp:include page="_htmlHead.jsp"></jsp:include>
         <script>
@@ -78,11 +78,9 @@
                 
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="${pageContext.request.contextPath}/editTTNV?maNV=${user.maNV}">Chỉnh sửa thông tin</a></li>
-                    <c:if test="${loginedUser.tenVT=='Admin'}">
-                    <li><input type="button" value="Đổi mật khẩu" class="btn btn-primary" onclick="ChangePass()"></li>
-                    <li><input type="button" value="Thêm trình độ học vấn" class="btn btn-primary" onclick="ChangePass()"></li>
+                    <li>_<input type="button" value="Đổi mật khẩu" class="btn btn-primary" onclick="ChangePass()">_</li>
+                    <li><input type="button" value="Thêm trình độ học vấn" class="btn btn-primary" onclick="ChangePass()">_</li>
                     <li><input type="button" value="Thêm trình độ Ngoại ngữ" class="btn btn-primary" onclick="ChangePass()"></li>
-                    </c:if>
                     
                 </ul>
                 <br>
@@ -125,6 +123,13 @@
                     </div>
                     <div class="col-lg-3"></div>
                 </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-3" for="sdt">Số điện thoại</label>
+                    <div class="col-lg-6">
+                        <input class="form-control" id="sdt" type="text" name="sdt" value="${user.sdt}">
+                    </div>
+                    <div class="col-lg-3"></div>
+                </div>
                <div class="form-group">
                     <label class="control-label col-lg-3" for="pb">Phòng ban</label>
                     <div class="col-lg-6">
@@ -150,13 +155,7 @@
                     <div class="col-lg-3"></div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label col-lg-3" for="gc">Ghi chú</label>
-                    <div class="col-lg-6">
-                        <input class="form-control" id="gc" type="text" name="ghichu" placeholder="Ghi chú">
-                    </div>
-                    <div class="col-lg-3"></div>
-                </div>
+                
                 <div class="form-group">        
                     <div class="col-lg-offset-5 col-lg-1">
                         <input type="submit" value="Lưu" class="btn btn-primary" onclick="return KiemTra()">

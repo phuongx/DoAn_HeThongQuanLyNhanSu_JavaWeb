@@ -112,6 +112,70 @@
         <servlet-name>ChangePasswordServlet</servlet-name>
         <servlet-class>com.mp.quanlynhanvien.servlet.ChangePasswordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TinTuyenDungServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.TinTuyenDungServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ThongBaoServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.ThongBaoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DSChucVuServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.DSChucVuServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddChucVuServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.AddChucVuServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TrinhDoHocVanServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.TrinhDoHocVanServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TrinhDoNgoaiNguServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.TrinhDoNgoaiNguServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddTrinhDoHocVanServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.AddTrinhDoHocVanServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddTrinhDoNgoaiNguServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.AddTrinhDoNgoaiNguServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QlyTuyenDungServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.QlyTuyenDungServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TimTinTDServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.TimTinTDServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DsHopDongLaoDongServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.DsHopDongLaoDongServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TimHDTheoMaNVServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.TimHDTheoMaNVServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddHDLDServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.AddHDLDServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TKNhanVienPhongBan</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.TKNhanVienPhongBan</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetListServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.GetListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TKNhanVienTDHV</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.TKNhanVienTDHV</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -211,6 +275,70 @@
     <servlet-mapping>
         <servlet-name>ChangePasswordServlet</servlet-name>
         <url-pattern>/changePassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TinTuyenDungServlet</servlet-name>
+        <url-pattern>/tintuyendung</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ThongBaoServlet</servlet-name>
+        <url-pattern>/thongbao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DSChucVuServlet</servlet-name>
+        <url-pattern>/chucvu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddChucVuServlet</servlet-name>
+        <url-pattern>/addchucvu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TrinhDoHocVanServlet</servlet-name>
+        <url-pattern>/trinhdohocvan</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TrinhDoNgoaiNguServlet</servlet-name>
+        <url-pattern>/trinhdongoaingu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddTrinhDoHocVanServlet</servlet-name>
+        <url-pattern>/addtrinhdohocvan</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddTrinhDoNgoaiNguServlet</servlet-name>
+        <url-pattern>/addtrinhdongoaingu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QlyTuyenDungServlet</servlet-name>
+        <url-pattern>/qlytuyendung</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TimTinTDServlet</servlet-name>
+        <url-pattern>/timtintd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DsHopDongLaoDongServlet</servlet-name>
+        <url-pattern>/hopdonglaodong</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TimHDTheoMaNVServlet</servlet-name>
+        <url-pattern>/timhd-manv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddHDLDServlet</servlet-name>
+        <url-pattern>/add-hdld</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TKNhanVienPhongBan</servlet-name>
+        <url-pattern>/tk-nv-pb</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetListServlet</servlet-name>
+        <url-pattern>/getlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TKNhanVienTDHV</servlet-name>
+        <url-pattern>/tk-nv-tdhv</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

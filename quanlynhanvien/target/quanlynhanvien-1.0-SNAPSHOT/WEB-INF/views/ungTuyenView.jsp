@@ -10,7 +10,7 @@
 <html>
 <head>
     <jsp:include page="_htmlHead.jsp"></jsp:include>
-    <title>Ung tuyen</title>
+    <title>MP - Quản lý nhân sự</title>
     <script>
         function KiemTra() {
             var hoten = document.frmTT.hoten.value;
@@ -26,9 +26,10 @@
 </head>
 <body>
     <c:if test="${empty loginedUser}"><jsp:include page="_headerHome.jsp"></jsp:include></c:if>
-    <c:if test="${not empty loginedUser}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+    <c:if test="${quyen=='1'}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+    <c:if test="${quyen=='2'}"><jsp:include page="_headerNhanvien.jsp"></jsp:include></c:if>
     <p style="color:red;">${errorString}</p>
-    <p><i style="color: red">Lưu ý: Cần điền đầy đủ các trường thông tin (*) bên dưới.</i></p>
+    
     <form action="${pageContext.request.contextPath}/ungTuyen" method="POST" enctype="multipart/form-data" 
           class="form-horizontal" name="frmTT">
         <div class="form-group">
@@ -53,29 +54,21 @@
             <div class="col-lg-3"></div>
         </div>
         <div class="form-group">
-            <label class="control-label col-lg-3" for="vt">Vị trí ứng tuyển (*)</label>
+            <label class="control-label col-lg-3" for="vt">Tên vị trí ứng tuyển (*)</label>
             <div class="col-lg-6">
-                <select class="form-control" id="vt" name="tenVT">
-                    <c:forEach items="${listVT}" var="values">
-                        <option value="${values.tenVT}">${values.maVT}-${values.tenVT}</option>
-                    </c:forEach>
-                </select>
+                <input class="form-control" id="vt" type="text" name="tenVT" value="${tin.tenVT}">
             </div>
             <div class="col-lg-3"></div>
         </div>
         <div class="form-group">
             <label class="control-label col-lg-3" for="pb">Phòng ban ứng tuyển (*)</label>
             <div class="col-lg-6">
-                <select class="form-control" id="pb" name="tenPB">
-                    <c:forEach items="${listPB}" var="values">
-                        <option value="${values.tenPB}">${values.maPB}-${values.tenPB}</option>
-                    </c:forEach>
-                </select>
+                <input class="form-control" id="vt" type="text" name="tenPB" value="${tin.tenPB}">
             </div>
             <div class="col-lg-3"></div>
         </div>      
         <div class="form-group">
-            <label class="control-label col-lg-3" for="cv">Tải lên CV (*)</label>
+            <label class="control-label col-lg-3" for="cv">Tải lên CV <i>(.pdf)</i> (*)</label>
             <div class="col-lg-6">
                 <input class="form-control" type="file" id="cv" name="cv">
             </div>

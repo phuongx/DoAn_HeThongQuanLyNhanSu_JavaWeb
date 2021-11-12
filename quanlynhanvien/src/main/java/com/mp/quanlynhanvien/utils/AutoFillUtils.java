@@ -60,6 +60,26 @@ public class AutoFillUtils {
                   
         return maPB;
     }
+    public static String getMaVT(Connection conn) {
+        String maVT = null;
+        try{
+            
+            maVT = DBUtils.maxMaVT(conn);
+        } catch (SQLException e){
+            e.printStackTrace();
+           
+        }
+        String VTMoi = maVT.substring(2);
+        int temp = Integer.parseInt(VTMoi) + 1;
+        if (temp < 10)
+            maVT = "R00" + temp;
+        else if (temp < 100)
+                maVT = "R0" + temp;
+            else 
+                maVT = "R" + temp;
+                  
+        return maVT;
+    }
     public static String getMaHSUT(Connection conn) {
         String maHS = null;
         try{

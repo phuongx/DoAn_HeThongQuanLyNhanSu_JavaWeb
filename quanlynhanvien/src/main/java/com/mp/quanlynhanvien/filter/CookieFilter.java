@@ -48,6 +48,7 @@ public class CookieFilter implements Filter {
         Connection conn = StorageUtils.getStoredConnection(request);
         
         UserAccount userInSession = StorageUtils.getLoginedUser(session);
+        
         List<CongViec> list1 = new ArrayList<CongViec>();
         // 
         if (userInSession != null) {
@@ -57,6 +58,9 @@ public class CookieFilter implements Filter {
                 e.printStackTrace();
             }
             StorageUtils.storeSoluong(session, list1.size());
+            
+            StorageUtils.storeQuyen(session, userInSession.getQuyen());
+            
             session.setAttribute("COOKIE_CHECKED", "CHECKED");
             chain.doFilter(request, response);
             return;

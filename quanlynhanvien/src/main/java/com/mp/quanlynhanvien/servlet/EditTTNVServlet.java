@@ -35,13 +35,14 @@ public class EditTTNVServlet extends HttpServlet {
         //ktra dang nhap
         HttpSession session = request.getSession();
         UserAccount loginedUser = StorageUtils.getLoginedUser(session);
+        int quyenUser = StorageUtils.getQuyenUser(session);
         if (loginedUser == null){
             response.sendRedirect(request.getContextPath()+"/login");
             return;
         }
         //xu ly
         //ktra quyen: chi co admin
-        if (loginedUser.getTenVT().equals("Admin") == false ){
+        if (quyenUser == 2 ){
             errorString = "Quyen truy cap that bai.";
             request.setAttribute("errorString", errorString);
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/errorView.jsp");
@@ -91,10 +92,11 @@ public class EditTTNVServlet extends HttpServlet {
         String maNV = request.getParameter("maNV");
         String cmnd = request.getParameter("cmnd");
         String email = request.getParameter("email");
+        String sdt = request.getParameter("sdt");
         String diachi = request.getParameter("diachi");
         String tenPB = request.getParameter("tenPB");
         String tenVT = request.getParameter("tenVT");
-        String ghichu = request.getParameter("ghichu");
+        
         
         Connection conn = StorageUtils.getStoredConnection(request);
         
@@ -107,10 +109,11 @@ public class EditTTNVServlet extends HttpServlet {
             if (user != null){
                 user.setCmnd(cmnd);
                 user.setEmail(email);
+                user.setSdt(sdt);
                 user.setDiachi(diachi);
                 user.setTenPB(tenPB);
                 user.setTenVT(tenVT);
-                user.setGhichu(ghichu);
+                
                 DBUtils.updateNhanVien(conn, user);
             } else {
                 errorString = "da co loi xay ra ";

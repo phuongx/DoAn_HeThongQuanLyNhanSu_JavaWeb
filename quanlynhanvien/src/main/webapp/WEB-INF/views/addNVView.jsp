@@ -10,7 +10,7 @@
 <html>
     <head>
         <jsp:include page="_htmlHead.jsp"></jsp:include>
-        <title>Them nhan vien moi</title>
+        <title>MP - Tạo hồ sơ mới</title>
         <script>
             function KiemTra() {
              
@@ -20,12 +20,15 @@
                 var hoten = document.frmTT.hoten.value;
                 var cmnd = document.frmTT.cmnd.value;
                 var email = document.frmTT.email.value;
+                var sdt = document.frmTT.email.value;
+                var ngaysinh = document.frmTT.email.value;
                 var gioitinh = document.frmTT.gioitinh.value;
                 var diachi = document.frmTT.diachi.value;
                 var ngaybd = document.frmTT.ngayBD.value;
                 if (maNV=="" || password=="" || hoten=="" || gioitinh=="" || diachi=="" || ngaybd=="" ||
                     cmnd=="" || email=="" || maNV==null || password==null || hoten==null || gioitinh==null || 
-                    diachi==null || ngaybd==null || cmnd==null || email==null ){
+                    diachi==null || ngaybd==null || cmnd==null || email==null || sdt==null || ngaysinh=null||
+                    sdt="" || ngaysinh=""){
                     alert("Các thông tin (*) không được trống.");
                     return false;
                 }
@@ -42,7 +45,7 @@
         <jsp:include page="_header.jsp"></jsp:include>
 
         <p style="color:red;">${errorString}</p>
-        <p><i style="color: red">Lưu ý: Cần điền đầy đủ các trường thông tin (*) bên dưới.</i></p>
+        
         <form action="${pageContext.request.contextPath}/addNV" method="POST" class="form-horizontal" name="frmTT">
             <div class="form-group">
                 <label class="control-label col-lg-3" for="manv">Mã nhân viên (*)</label>
@@ -91,7 +94,20 @@
                 </div>
                 <div class="col-lg-3"></div>
             </div>
-                
+            <div class="form-group">
+                <label class="control-label col-lg-3" for="sdt">Số điện thoại (*)</label>
+                <div class="col-lg-6">
+                    <input class="form-control" id="sdt" type="text" name="sdt" placeholder="Nhập số điện thoại">
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-3" for="ns">Ngày sinh (*)</label>
+                <div class="col-lg-6">
+                    <input class="form-control" id="ns" type="text" name="ngaysinh" placeholder="yyyy-mm-dd">
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
             <div class="form-group">
                 <label class="control-label col-lg-3" for="gt">Giới tính (*)</label>
                 <div class="col-lg-6">
@@ -131,23 +147,7 @@
                 </div>
                 <div class="col-lg-3"></div>
             </div>
-                
-            <div class="form-group">
-                <label class="control-label col-lg-3" for="ngay">Ngày bắt đầu (*)</label>
-                <div class="col-lg-6">
-                    <input class="form-control" id="ngay" type="text" name="ngayBD" placeholder="yyyy-mm-dd">
-                </div>
-                <div class="col-lg-3"></div>
-            </div>
-            
-            <div class="form-group">
-                <label class="control-label col-lg-3" for="gc">Ghi chú</label>
-                <div class="col-lg-6">
-                    <input class="form-control" id="gc" type="text" name="ghichu" placeholder="Ghi chú">
-                </div>
-                <div class="col-lg-3"></div>
-            </div>
-                
+    
             <div class="form-group">        
                 <div class="col-lg-offset-5 col-lg-1">
                     <input type="submit" value="Lưu" class="btn btn-primary" onclick="return KiemTra()">

@@ -5,21 +5,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.mp.quanlynhanvien.beans.UserAccount;
-import com.mp.quanlynhanvien.beans.PhongBan;
-import com.mp.quanlynhanvien.beans.ViTri;
-import com.mp.quanlynhanvien.beans.TrangThai;
-import com.mp.quanlynhanvien.beans.ViPham;
-import com.mp.quanlynhanvien.beans.ThanhTich;
-import com.mp.quanlynhanvien.beans.MucLuong;
-import com.mp.quanlynhanvien.beans.NVThoiViec;
-import com.mp.quanlynhanvien.beans.HSUngTuyen;
-import com.mp.quanlynhanvien.beans.CongViec;
-import com.mp.quanlynhanvien.beans.TinTuyenDung;
-
+import com.mp.quanlynhanvien.beans.*;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Map;
+import java.util.LinkedHashMap;
 /**
  *
  * @author Ms Phuong
@@ -40,21 +30,18 @@ public class DBUtils {
             String hoten = rs.getString("hoten");
             String cmnd = rs.getString("cmnd");
             String email = rs.getString("email");
+            String sdt = rs.getString("sdt");
+            String ngaysinh = rs.getString("ngay_sinh");
             String gioitinh = rs.getString("gioitinh");
             String diachi = rs.getString("diachi");
-            String hinhanh = rs.getString("hinhanh");
             String tenPB = rs.getString("ten_pb");
             String tenVT = rs.getString("ten_vt");
-            String ngayBD = rs.getString("ngay_bd");
             String tenTT = rs.getString("ten_tt");
-            String ghichu = rs.getString("ghichu");
-            
-            
-            
-            UserAccount user = new UserAccount(maNV,password,hoten,cmnd,email,gioitinh,diachi,hinhanh,
-                                    tenPB,tenVT,ngayBD,tenTT,ghichu);
-            
-            
+            int quyen = rs.getInt("quyen");
+
+            UserAccount user = new UserAccount(maNV,password,hoten,cmnd,email,sdt,
+                ngaysinh,gioitinh,diachi,tenPB,tenVT,tenTT,quyen);
+
             return user;
         }
         return null;
@@ -75,21 +62,17 @@ public class DBUtils {
             String hoten = rs.getString("hoten");
             String cmnd = rs.getString("cmnd");
             String email = rs.getString("email");
+            String sdt = rs.getString("sdt");
+            String ngaysinh = rs.getString("ngay_sinh");
             String gioitinh = rs.getString("gioitinh");
             String diachi = rs.getString("diachi");
-            String hinhanh = rs.getString("hinhanh");
             String tenPB = rs.getString("ten_pb");
             String tenVT = rs.getString("ten_vt");
-            String ngayBD = rs.getString("ngay_bd");
             String tenTT = rs.getString("ten_tt");
-            String ghichu = rs.getString("ghichu");
-            
-            
-            
-            UserAccount user = new UserAccount(maNV,password,hoten,cmnd,email,gioitinh,diachi,hinhanh,
-                                    tenPB,tenVT,ngayBD,tenTT,ghichu);
-            
-            
+            int quyen = rs.getInt("quyen");
+
+            UserAccount user = new UserAccount(maNV,password,hoten,cmnd,email,sdt,
+                ngaysinh,gioitinh,diachi,tenPB,tenVT,tenTT,quyen);
             return user;
         }
         return null;
@@ -113,19 +96,18 @@ public class DBUtils {
             String hoten = rs.getString("hoten");
             String cmnd = rs.getString("cmnd");
             String email = rs.getString("email");
+            String sdt = rs.getString("sdt");
+            String ngaysinh = rs.getString("ngay_sinh");
             String gioitinh = rs.getString("gioitinh");
             String diachi = rs.getString("diachi");
-            String hinhanh = rs.getString("hinhanh");
             String tenPB = rs.getString("ten_pb");
             String tenVT = rs.getString("ten_vt");
-            String ngayBD = rs.getString("ngay_bd");
             String tenTT = rs.getString("ten_tt");
-            String ghichu = rs.getString("ghichu");
+            int quyen = rs.getInt("quyen");
+
+            UserAccount user = new UserAccount(maNV,password,hoten,cmnd,email,sdt,
+                ngaysinh,gioitinh,diachi,tenPB,tenVT,tenTT,quyen);
             
-            
-            
-            UserAccount user = new UserAccount(maNV,password,hoten,cmnd,email,gioitinh,diachi,hinhanh,
-                                    tenPB,tenVT,ngayBD,tenTT,ghichu);
             list.add(user);
         }
         return list;
@@ -173,13 +155,8 @@ public class DBUtils {
         return list;
         
     }
-    public static List<UserAccount> dsNhanVien(Connection conn, String trangthai)throws SQLException{
-        String sql = null ;
-        if (trangthai.equals("Tat ca"))
-            sql = "Select ma_nv from user_account order by ma_nv ASC";
-        else if (trangthai.equals("Hoat dong"))
-            sql = "Select ma_nv from user_account where ten_tt = 'Hoat dong' order by ma_nv ASC";
-        else sql = "Select ma_nv from user_account where ten_tt = 'Thoi viec' order by ma_nv ASC";
+    public static List<UserAccount> dsNhanVien(Connection conn)throws SQLException{
+        String sql = "Select ma_nv from user_account where ten_tt = 'Hoat dong' order by ma_nv ASC";
         PreparedStatement pstm = conn.prepareStatement(sql);
         
         ResultSet rs = pstm.executeQuery();
@@ -225,9 +202,8 @@ public class DBUtils {
     }
     public static void insertNhanVien(Connection conn, UserAccount userAccount) throws SQLException {
         
-        String sql = "Insert into user_account (ma_nv, password,hoten,cmnd,email, gioitinh, diachi,"
-                + "ten_pb, ten_vt, ngay_bd, ten_tt, ghichu)"
-                + " values (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "Insert into user_account "
+                + " values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
  
         PreparedStatement pstm = conn.prepareStatement(sql);
  
@@ -236,13 +212,14 @@ public class DBUtils {
         pstm.setString(3, userAccount.getHoten());
         pstm.setString(4, userAccount.getCmnd());
         pstm.setString(5, userAccount.getEmail());
-        pstm.setString(6, userAccount.getGioitinh());
-        pstm.setString(7, userAccount.getDiachi());
-        pstm.setString(8, userAccount.getTenPB());
-        pstm.setString(9, userAccount.getTenVT());
-        pstm.setString(10, userAccount.getNgayBD());
-        pstm.setString(11, userAccount.getTenTT());
-        pstm.setString(12, userAccount.getGhichu());
+        pstm.setString(6, userAccount.getSdt());
+        pstm.setString(7, userAccount.getNgaysinh());
+        pstm.setString(8, userAccount.getGioitinh());
+        pstm.setString(9, userAccount.getDiachi());
+        pstm.setString(10, userAccount.getTenPB());
+        pstm.setString(11, userAccount.getTenVT());
+        pstm.setString(12, userAccount.getTenTT());
+        pstm.setInt(13, userAccount.getQuyen());
  
         pstm.executeUpdate();
     }
@@ -279,6 +256,50 @@ public class DBUtils {
             list.add(phongban);
         }
         return list;
+        
+    }
+    public static Map<PhongBan,String> ds_PhongBan(Connection conn) throws SQLException{
+        
+        String sql = "Select * from phong_ban order by ma_pb ASC";
+                
+ 
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+        Map <PhongBan,String> listPB = new LinkedHashMap<PhongBan,String>();
+        while (rs.next()) {
+            
+            String maPB = rs.getString("ma_pb");
+            String tenPB = rs.getString("ten_pb");
+            
+            PhongBan phongban = new PhongBan(maPB,tenPB);
+            List <UserAccount> list;
+            list = getUsersPhongBanX(conn,phongban.getTenPB());
+            listPB.put(phongban, String.valueOf(list.size()));
+        }
+        return listPB;
+        
+    }
+    public static Map<TrinhDoHocVan,String> ds_TrinhDoHocVan(Connection conn) throws SQLException{
+        
+        String sql = "Select * from trinhdo order by ma_td ASC";
+                
+ 
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+        Map <TrinhDoHocVan,String> listPB = new LinkedHashMap<TrinhDoHocVan,String>();
+        while (rs.next()) {
+            
+            int ma = rs.getInt("ma_td");
+            String ten = rs.getString("ten_td");
+            
+            TrinhDoHocVan td = new TrinhDoHocVan(ma,ten);
+            List <UserAccount> list;
+            list = getUsersTrinhDoX(conn,td.getMa());
+            listPB.put(td, String.valueOf(list.size()));
+        }
+        return listPB;
         
     }
     public static List<ViTri> dsViTri(Connection conn) throws SQLException{
@@ -372,6 +393,19 @@ public class DBUtils {
         }
         return maPB;
     }
+    public static String maxMaVT(Connection conn) throws SQLException{
+        String sql = "select MAX(ma_vt) as mavt from vi_tri ";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+        String maVT = null;
+        
+        if (rs.next()){
+            maVT = rs.getString("mavt");
+        }
+        return maVT;
+    }
     public static String maxMaHS(Connection conn) throws SQLException{
         String sql = "select MAX(ma_hoso) as maHS from ungtuyen ";
         
@@ -386,6 +420,70 @@ public class DBUtils {
         }
         return maHS;
     }
+    public static List<TrinhDoHocVan> dsTrinhDoHocVan(Connection conn) throws SQLException{
+        
+        String sql = "Select * from trinhdo order by ma_td ASC";
+                
+ 
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+        List<TrinhDoHocVan> list = new ArrayList<TrinhDoHocVan>();
+        while (rs.next()) {
+            
+            int maTD = rs.getInt("ma_td");
+            String tenTD = rs.getString("ten_td");
+            
+            TrinhDoHocVan trinhdo = new TrinhDoHocVan(maTD,tenTD);
+            
+            list.add(trinhdo);
+        }
+        return list;
+        
+    }
+    public static void insertTrinhDoHocVan(Connection conn, TrinhDoHocVan td) throws SQLException {
+        String sql = "Insert into trinhdo(ten_td)"
+                + " values (?)";
+ 
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, td.getTen());
+
+        pstm.executeUpdate();
+        
+    }
+    public static List<TrinhDoNgoaiNgu> dsTrinhDoNgoaiNgu(Connection conn) throws SQLException{
+        
+        String sql = "Select * from trinhdo_nn order by ma_td ASC";
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        ResultSet rs = pstm.executeQuery();
+        List<TrinhDoNgoaiNgu> list = new ArrayList<TrinhDoNgoaiNgu>();
+        while (rs.next()) {
+            
+            int maTD = rs.getInt("ma_td");
+            String ngonngu = rs.getString("ngon_ngu");
+            String tenTD = rs.getString("ten_td");
+            
+            TrinhDoNgoaiNgu trinhdo = new TrinhDoNgoaiNgu(maTD,ngonngu,tenTD);
+            
+            list.add(trinhdo);
+        }
+        return list;
+        
+    }
+    public static void insertTrinhDoNgoaiNgu(Connection conn, TrinhDoNgoaiNgu td) throws SQLException {
+        String sql = "Insert into trinhdo_nn (ngon_ngu, ten_td)"
+                + " values (?,?)";
+ 
+        PreparedStatement pstm = conn.prepareStatement(sql);
+ 
+        pstm.setString(1, td.getNgonngu());
+        pstm.setString(2, td.getTen());
+
+        pstm.executeUpdate();
+        
+    }
     public static void insertPhongBan(Connection conn, PhongBan pb) throws SQLException {
         String sql = "Insert into phong_ban (ma_pb, ten_pb)"
                 + " values (?,?)";
@@ -398,18 +496,31 @@ public class DBUtils {
         
  
         pstm.executeUpdate();
+        
+    }
+    
+    public static void insertViTri(Connection conn, ViTri VT) throws SQLException {
+        String sql = "Insert into vi_tri (ma_vt, ten_vt)"
+                + " values (?,?)";
+ 
+        PreparedStatement pstm = conn.prepareStatement(sql);
+ 
+        pstm.setString(1, VT.getMaVT());
+        pstm.setString(2, VT.getTenVT());
+
+        pstm.executeUpdate();
     }
     public static void updateNhanVien(Connection conn, UserAccount user) throws SQLException {
-        String sql = "Update user_account set cmnd=?, email=?,  diachi =?, ten_pb=?, ten_vt=?, "
-                + " ghichu=? where ma_nv=? ";
+        String sql = "Update user_account set cmnd=?, email=?, sdt=?,  diachi =?, ten_pb=?, ten_vt=?, "
+                + "  where ma_nv=? ";
  
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, user.getCmnd());
         pstm.setString(2, user.getEmail());
-        pstm.setString(3, user.getDiachi());
-        pstm.setString(4, user.getTenPB());
-        pstm.setString(5, user.getTenVT());
-        pstm.setString(6, user.getGhichu());
+        pstm.setString(3, user.getSdt());
+        pstm.setString(4, user.getDiachi());
+        pstm.setString(5, user.getTenPB());
+        pstm.setString(6, user.getTenVT());
         pstm.setString(7, user.getMaNV());
         pstm.executeUpdate();
         
@@ -588,9 +699,29 @@ public class DBUtils {
         }
         return hoso;
     }
+    public static TinTuyenDung getTinTuyenDung(Connection conn, int maTin) throws SQLException{
+
+        String sql = "SELECT * FROM tin_tuyen_dung WHERE ma_tin=?";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, maTin);
+        TinTuyenDung tin = new TinTuyenDung();
+        
+        ResultSet rs =  pstm.executeQuery();
+        while (rs.next()){
+            String tenPB = rs.getString("ten_pb");
+            String tenVT = rs.getString("ten_vt");
+            int soluong = rs.getInt("so_luong");
+            String mota = rs.getString("mo_ta");
+            String ngayBD = rs.getString("ngay_bd");
+            String ngayKT = rs.getString("ngay_kt");
+            tin = new TinTuyenDung(maTin,tenPB,tenVT,soluong,mota,ngayBD,ngayKT);
+        }
+        return tin;
+    }
+    
     public static List<TinTuyenDung> getTinTuyenDung(Connection conn) throws SQLException{
 
-        String sql = "SELECT * FROM tin_tuyen_dung WHERE ngay_kt >= (select CURRENT_DATE)";
+        String sql = "SELECT ma_tin FROM tin_tuyen_dung order by ma_tin DESC";
         PreparedStatement pstm = conn.prepareStatement(sql);
         
         List<TinTuyenDung> list = new ArrayList<TinTuyenDung>();
@@ -598,14 +729,21 @@ public class DBUtils {
         ResultSet rs =  pstm.executeQuery();
         while (rs.next()){
             int maTin = rs.getInt("ma_tin");
-            String tenPB = rs.getString("ten_pb");
-            String tenVT = rs.getString("ten_vt");
-            int soluong = rs.getInt("so_luong");
-            String mota = rs.getString("mo_ta");
-            String ngayBD = rs.getString("ngay_bd");
-            String ngayKT = rs.getString("ngay_kt");
-            TinTuyenDung tin = new TinTuyenDung(maTin,tenPB,tenVT,soluong,mota,ngayBD,ngayKT);
-            
+            TinTuyenDung tin = getTinTuyenDung(conn, maTin);
+            list.add(tin);
+        }
+        return list;
+    }
+    public static List<TinTuyenDung> getTinTuyenDung(Connection conn, String name, String col_name) throws SQLException {
+
+        String sql = "Select ma_tin from tin_tuyen_dung where "+col_name+" like '%"+name+"%'";
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        ResultSet rs = pstm.executeQuery();
+        List<TinTuyenDung> list = new ArrayList<TinTuyenDung>();
+        while (rs.next()){
+            int maTin = rs.getInt("ma_tin");
+            TinTuyenDung tin = getTinTuyenDung(conn, maTin);
             list.add(tin);
         }
         return list;
@@ -617,10 +755,10 @@ public class DBUtils {
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, tin.getTenPB());
         pstm.setString(2, tin.gettenVT());
-        pstm.setInt(3, tin.getSoluong());
-        pstm.setString(4, tin.getMota());
-        pstm.setString(5, tin.getNgayBD());
-        pstm.setString(6, tin.getNgayKT());
+        pstm.setInt(4, tin.getSoluong());
+        pstm.setString(5, tin.getMota());
+        pstm.setString(6, tin.getNgayBD());
+        pstm.setString(7, tin.getNgayKT());
         
         pstm.executeUpdate();
 
@@ -632,5 +770,106 @@ public class DBUtils {
         pstm.setString(1, newPass);
         pstm.setString(2, maNV);
         pstm.executeUpdate();
+    }
+    public static HopDongLaoDong getHopDongLaoDong(Connection conn, int maHD) throws SQLException{
+
+        String sql = "SELECT * FROM hopdong_laodong WHERE ma_hd=?";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, maHD);
+        HopDongLaoDong hd = new HopDongLaoDong();
+        
+        ResultSet rs =  pstm.executeQuery();
+        while (rs.next()){
+            String maNV = rs.getString("ma_nv");
+            String ngayKy = rs.getString("ngay_ky");
+            String ngayHH = rs.getString("ngay_het_han");
+            String url = rs.getString("link");
+            hd = new HopDongLaoDong(maHD,maNV,ngayKy,ngayHH,url);
+        }
+        return hd;
+    }
+    public static List<HopDongLaoDong> getHopDongLaoDong(Connection conn, String maNV) throws SQLException{
+
+        String sql = "SELECT ma_hd FROM hopdong_laodong WHERE ma_nv like '%"+maNV+"%'";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        List<HopDongLaoDong> list = new ArrayList<HopDongLaoDong>();
+        ResultSet rs =  pstm.executeQuery();
+        while (rs.next()){
+            int maHD = rs.getInt("ma_hd");
+            HopDongLaoDong hd = getHopDongLaoDong(conn,maHD);
+            list.add(hd);
+        }
+        return list;
+    }
+    public static List<HopDongLaoDong> getHopDongLaoDong(Connection conn) throws SQLException {
+
+        String sql = "SELECT * FROM hopdong_laodong order by ma_hd DESC";
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        ResultSet rs = pstm.executeQuery();
+        List<HopDongLaoDong> list = new ArrayList<HopDongLaoDong>();
+        while (rs.next()){
+            int maHD = rs.getInt("ma_hd");
+            HopDongLaoDong hd = getHopDongLaoDong(conn, maHD);
+            list.add(hd);
+        }
+        return list;
+    }
+    public static void insertHopDongLaoDong (Connection conn, HopDongLaoDong hd) throws SQLException{
+
+        String sql = "insert into hopdong_laodong(ma_nv, ngay_ky, ngay_het_han, link)"
+                + "values(?,?,?,?)";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, hd.getMaNV());
+        pstm.setString(2, hd.getNgayKy());
+        pstm.setString(3, hd.getNgayHetHan());
+        pstm.setString(4, hd.getUrl());
+        
+        pstm.executeUpdate();
+
+    }
+    public static List<UserAccount> getUsersQuyenX(Connection conn, int quyen) throws SQLException {
+
+        String sql = "SELECT ma_nv FROM user_account where quyen="+quyen;
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        ResultSet rs = pstm.executeQuery();
+        List<UserAccount> list = new ArrayList<UserAccount>();
+        while (rs.next()){
+            String maNV = rs.getString("ma_nv");
+            UserAccount user = findUser(conn, maNV);
+            list.add(user);
+        }
+        return list;
+    }
+    public static List<UserAccount> getUsersPhongBanX(Connection conn, String tenPB) throws SQLException {
+
+        String sql = "SELECT ma_nv FROM user_account where ten_pb=?";
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, tenPB);
+        ResultSet rs = pstm.executeQuery();
+        List<UserAccount> list = new ArrayList<UserAccount>();
+        while (rs.next()){
+            String maNV = rs.getString("ma_nv");
+            UserAccount user = findUser(conn, maNV);
+            list.add(user);
+        }
+        return list;
+    }
+    public static List<UserAccount> getUsersTrinhDoX(Connection conn, int maTD) throws SQLException {
+        
+        
+        String sql = "SELECT ma_nv FROM trinhdo_nv where ma_td="+maTD;
+
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        ResultSet rs = pstm.executeQuery();
+        List<UserAccount> list = new ArrayList<UserAccount>();
+        while (rs.next()){
+            String maNV = rs.getString("ma_nv");
+            UserAccount user = findUser(conn, maNV);
+            list.add(user);
+        }
+        return list;
     }
 }

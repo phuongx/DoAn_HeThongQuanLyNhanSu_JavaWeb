@@ -10,7 +10,7 @@
 <html>
     <head>
         <jsp:include page="_htmlHead.jsp"></jsp:include>
-        <title>Việc cần làm</title>
+        <title>MP - Việc cần làm</title>
         <script>
             var request;
             function TimKiem() {
@@ -61,7 +61,9 @@
         </script>
     </head>
     <body>
-        <jsp:include page="_header.jsp"></jsp:include>
+
+        <c:if test="${quyen=='1'}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+        <c:if test="${quyen=='2'}"><jsp:include page="_headerNhanvien.jsp"></jsp:include></c:if>
         <form name="frmTK" class="form-horizontal">
              
             <div class="form-group">
@@ -69,8 +71,8 @@
                 <div class="col-lg-4">
                     <div class="input-group">
                         <select class="form-control" id="st" name="status">
-                            <option value="Chua hoan thanh" selected="selected">Chua hoan thanh</option>
-                            <option value="Hoan thanh">Hoan thanh</option>
+                            <option value="Chua hoan thanh" selected="selected">Chưa hoàn thành</option>
+                            <option value="Hoan thanh">Hoàn thành</option>
                         </select>
                         <div class="input-group-btn">
                             <button class="btn btn-primary" type="button" onclick="TimKiem()"><i class="glyphicon glyphicon-search"></i></button>

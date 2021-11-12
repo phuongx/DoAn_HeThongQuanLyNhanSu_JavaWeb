@@ -11,19 +11,20 @@
 <html>
   <head>
      <jsp:include page="_htmlHead.jsp"></jsp:include>
-     <title>Login Page</title>
+     <title>MP - Trang đăng nhập</title>
   </head>
   <body>
  
     <c:if test="${empty loginedUser}"><jsp:include page="_headerHome.jsp"></jsp:include></c:if>
-    <c:if test="${not empty loginedUser}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+    <c:if test="${quyen=='1'}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+    <c:if test="${quyen=='2'}"><jsp:include page="_headerNhanvien.jsp"></jsp:include></c:if>
     <br>
   
-  <div class="alert alert-info">
+  
       <p style="color: red;">${errorString}</p>
       <br>
-    <form class="form-horizontal" action="${pageContext.request.contextPath}/login" method="POST">
-        
+    <form class="form-horizontal" action="${pageContext.request.contextPath}/login" method="POST" >
+        <br>
       <div class="form-group">
         <label class="control-label col-lg-4" for="manv">Mã nhân viên</label>
         <div class="col-lg-4">
@@ -51,7 +52,7 @@
         </div>
       </div>
     </form>  
-    </div>
+ 
     <jsp:include page="_footer.jsp"></jsp:include>
  
   </body>

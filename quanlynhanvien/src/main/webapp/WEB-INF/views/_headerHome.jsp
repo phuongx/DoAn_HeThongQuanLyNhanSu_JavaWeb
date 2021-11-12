@@ -14,8 +14,7 @@
 
         <ul class="nav navbar-nav">
             <li class="active"><a href="${pageContext.request.contextPath}/">Home</a></li>
-            <li><a href="${pageContext.request.contextPath}/login">Đăng nhập</a></li>
-            <li><a href="${pageContext.request.contextPath}/ungTuyen">Ứng tuyển</a></li>
+            <li><a href="${pageContext.request.contextPath}/tintuyendung">Tuyển dụng</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -23,5 +22,5 @@
         </ul>
     </div>
 </nav>
-<div class="container" style="margin-top:72px">
+<div class="container" style="margin-top:50px">
 

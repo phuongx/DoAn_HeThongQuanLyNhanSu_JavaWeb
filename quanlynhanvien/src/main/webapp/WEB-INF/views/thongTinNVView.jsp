@@ -11,79 +11,88 @@
 <html>
  <head>
     <jsp:include page="_htmlHead.jsp"></jsp:include>
-    <title>User Info</title>
+    <title>MP - Quản lý nhân sự</title>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
  </head>
  <body>
- 
-    <jsp:include page="_header.jsp"></jsp:include>
 
+    <c:if test="${quyen=='1'}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+    <c:if test="${quyen=='2'}"><jsp:include page="_headerNhanvien.jsp"></jsp:include></c:if>
     <p style="color: red;">${errorString}</p>
+                <hr>
+            <h4 style="text-align: center;">Thông tin nhân viên <b style="color:blue;">${user.hoten}</b></h4>
+            <hr />
     <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-10">
-            <h4>Thông tin nhân viên <b style="color:blue;">${user.hoten}</b></h4>
-            <br />
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-4">
 
-            <c:if test="${not empty user.hinhanh}">
-                <img src="<c:url value="/file/hinhanh/${user.hinhanh}" />" alt="anh dai dien" style="height:100px;width:80px"><br>
-            </c:if>
-                <a href="${pageContext.request.contextPath}/uploadAnh?maNV=${user.maNV}"><button type="button"><i class='fas fa-camera-retro'></i></button></a>
 
             <table class="table table-striped">
 
                 <tr>
-                    <th colspan="2" >THÔNG TIN CÁ NHÂN</th>
+                    <th colspan="2" class="info">THÔNG TIN CÁ NHÂN</th>
                 </tr>
                 <tr>
-                    <th class="text-right">Mã nhân viên</td>
+                    <th >Mã nhân viên</td>
                     <td>${user.maNV}</td>
                 </tr>
                 <tr>
-                    <th class="text-right">Họ tên </td>
-                    <td>${user.hoten } </td>
-                </tr>
-                <tr>
-                    <th class="text-right">CMND/CCCD</td>
-                    <td>${user.cmnd } </td>
-                </tr>
-                <tr>
-                    <th class="text-right">Email </td>
-                    <td>${user.email } </td>
-                </tr>
-                <tr>
-                    <th class="text-right">Giới tính</td>
-                    <td>${user.gioitinh }</td>
-                </tr> 
-                <tr>
-                    <th class="text-right">Địa chỉ</td>
-                    <td>${user.diachi } </td>
-                </tr>
-                <tr>
-                    <th class="text-right">Phòng ban </td>
+                    <th >Phòng ban </td>
                     <td>${user.tenPB } </td>
                 </tr>
                 <tr>
-                    <th class="text-right">Vị trí</td>
+                    <th >Vị trí</td>
                     <td>${user.tenVT } </td>
                 </tr>
                 <tr>
-                    <th class="text-right">Ngày bắt đầu </td>
-                    <td>${user.ngayBD } </td>
-                </tr>
-                <tr>
-                    <th class="text-right">Trạng thái </td>
+                    <th >Trạng thái </td>
                     <td>${user.tenTT} </td>
                 </tr>
+            </table>
+        </div>
+        <div class="col-lg-4">
+            <table class="table table-striped">
+
                 <tr>
-                    <th class="text-right">Ghi chú</td>
-                    <td>${user.ghichu } </td>
+                    <th >Họ và tên </td>
+                    <td>${user.hoten } </td>
+                </tr>
+                
+                <tr>
+                    <th >Email </td>
+                    <td>${user.email } </td>
+                </tr>
+                <tr>
+                    <th >Số điện thoại </td>
+                    <td>${user.sdt } </td>
+                </tr>
+                <tr>
+                    <th >Ngày sinh </td>
+                    <td>${user.ngaysinh } </td>
+                </tr>
+                <tr>
+                    <th >Giới tính</td>
+                    <td>${user.gioitinh }</td>
+                </tr> 
+                <tr>
+                    <th >Địa chỉ</td>
+                    <td>${user.diachi } </td>
+                </tr>
+
                 </tr>
             </table>
-                <hr>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-8">
+            <hr>
             <table class="table table-striped">
                 <tr>
-                    <th colspan="2">THÀNH TÍCH TIÊU BIỂU</th>
+                    <th colspan="2" class="info">THÀNH TÍCH TIÊU BIỂU</th>
                 </tr>
                 <tr>
                     <th>Nội dung</th>
@@ -99,7 +108,7 @@
                 <hr>
             <table class="table table-striped">
                 <tr>
-                    <th colspan="2">VI PHẠM</th>
+                    <th colspan="2" class="info">VI PHẠM</th>
                 </tr>
                 <tr>
                     <th>Ngày vi phạm</th>
@@ -113,7 +122,7 @@
                 </c:forEach>
             </table>
         </div>
-        <div class="col-lg-1"></div>
+        <div class="col-lg-2"></div>
     </div>
  
     <jsp:include page="_footer.jsp"></jsp:include>

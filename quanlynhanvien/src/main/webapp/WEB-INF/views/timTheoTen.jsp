@@ -12,25 +12,22 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
+        <p>Danh sách này có <b style="color:blue">${sodong}</b> dòng.</p>
         <form name="frm2">
         <table class="table table-striped" >
             <tr class="text-center">
                 <th>Mã nhân viên</th>                
                 <th>Họ tên</th>
                 <th>Email</th>
+                <th>Số điện thoại</th>
                 <th>Giới tính</th>
                 <th>Phòng ban</th>
                 <th>Vị trí</th>
-                
                 <th>Xem chi tiết</th>
-                <c:if test="${not empty role}">
                 <th>Chỉnh sửa</th>
                 <th>Thêm thành tích</th>
                 <th>Thêm vi phạm</th>
-                </c:if>
-                <c:if test="${loginedUser.tenVT=='Admin'}">
-                <th>Thôi việc</th>  
-                </c:if>
+                <th>Thôi việc</th> 
                 
             </tr>
         <c:forEach items="${list}" var="values">
@@ -39,21 +36,16 @@
                 <td>${values.maNV}</td>
                 <td>${values.hoten}</td>
                 <td>${values.email}</td>
+                <td>${values.sdt}</td>
                 <td>${values.gioitinh}</td>
                 <td>${values.tenPB}</td>
                 <td>${values.tenVT}</td>
                 
                 <td class="text-center"><a href="thongTinNV?maNV=${values.maNV}">Xem</a></td>
-                <c:if test="${values.tenTT!='Thoi viec'}">
-                    <c:if test="${not empty role}">
-                    <td class="text-center"><a href="editTTNV?maNV=${values.maNV}">Sửa</a></td>
-                    <td class="text-center"><a href="addThanhTich?maNV=${values.maNV}">Thêm</a></td>
-                    <td class="text-center"><a href="addViPham?maNV=${values.maNV}">Thêm</a></td>  
-                    </c:if>
-                    <c:if test="${loginedUser.tenVT=='Admin'}">
-                    <td class="text-center"><input type="button" class="btn btn-danger" value="Đánh dấu" onclick="check_confirm(maNV${values.maNV}.value)"></td>  
-                    </c:if>
-                </c:if>
+                <td class="text-center"><a href="editTTNV?maNV=${values.maNV}">Sửa</a></td>
+                <td class="text-center"><a href="addThanhTich?maNV=${values.maNV}">Thêm</a></td>
+                <td class="text-center"><a href="addViPham?maNV=${values.maNV}">Thêm</a></td>  
+                <td class="text-center"><input type="button" class="btn btn-danger" value="Đánh dấu" onclick="check_confirm(maNV${values.maNV}.value)"></td>
                 <c:if test="${values.tenTT=='Thoi viec'}">
                     <td></td>
                     <td></td>

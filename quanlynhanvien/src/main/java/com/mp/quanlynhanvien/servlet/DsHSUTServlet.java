@@ -35,14 +35,16 @@ public class DsHSUTServlet extends HttpServlet {
         String errorString = null;
         UserAccount loginedUser = StorageUtils.getLoginedUser(session);
         if (loginedUser == null){
-            errorString = "Ban chua dang nhap.";
+            errorString = "Bạn chưa đăng nhập..";
             request.setAttribute("errorString", errorString);
             request.getRequestDispatcher("/WEB-INF/views/loginView.jsp").forward(request, response);
             return;
-        } 
-        //chi co quan ly co the truy cap
-        if (loginedUser.getTenVT().equals("Quan ly") == false && loginedUser.getTenVT().equals("Admin") == false){
-            errorString = "Quyen truy cap that bai.";
+        }
+        
+        //ktra quyen: chi co admin
+        int quyenUser = StorageUtils.getQuyenUser(session);
+        if (quyenUser == 2 ){
+            errorString = "Quyền truy cập thất bại..";
             request.setAttribute("errorString", errorString);
             request.getRequestDispatcher("/WEB-INF/views/errorView.jsp").forward(request, response);
             return;
@@ -61,6 +63,7 @@ public class DsHSUTServlet extends HttpServlet {
         }
         
         // luu thong tin vao request
+        request.setAttribute("sodong", list.size());
         request.setAttribute("trangthai", "Chua duyet");
         request.setAttribute("list", list);
         request.setAttribute("errorString", errorString);
@@ -85,6 +88,7 @@ public class DsHSUTServlet extends HttpServlet {
         }
         
         // luu thong tin vao request
+        request.setAttribute("sodong", list.size());
         request.setAttribute("trangthai", trangthai);
         request.setAttribute("list", list);
         request.setAttribute("errorString", errorString);

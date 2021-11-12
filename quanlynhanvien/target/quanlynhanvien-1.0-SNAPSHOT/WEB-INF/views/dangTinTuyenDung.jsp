@@ -10,7 +10,7 @@
 <html>
     <head>
         <jsp:include page="_htmlHead.jsp"></jsp:include>
-        <title>Dang tin tuyen dung</title>
+        <title>MP - Tuyển dụng</title>
         <script>
             function KiemTra() {
                 var mota = document.frmTT.mota.value;
@@ -30,7 +30,7 @@
     <body>
         <jsp:include page="_header.jsp"></jsp:include>
         <p style="color:red;">${errorString}</p>
-        <p><i style="color: red">Lưu ý: Cần điền đầy đủ các trường thông tin (*) bên dưới.</i></p>
+        
         <form method="post" action="${pageContext.request.contextPath}/dangTinTuyenDung" class="form-horizontal" name="frmTT">
             
             <div class="form-group">
@@ -55,6 +55,7 @@
                 </div>
                 <div class="col-lg-3"></div>
             </div>
+             
             <div class="form-group">
                 <label class="control-label col-lg-3" for="soluong">Số lượng (*)</label>
                 <div class="col-lg-6">

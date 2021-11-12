@@ -9,25 +9,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Nhan vien da nghi viec</title>
+        <title>MP - Nhân viên</title>
         <jsp:include page="_htmlHead.jsp"></jsp:include>
     </head>
     <body>
         <jsp:include page="_header.jsp"></jsp:include>
         
         <p style="color: red;">${errorString}</p>
-        
+        <p>Danh sách này có <b style="color:blue">${sodong}</b> dòng.</p>
         <table class="table table-striped" >
-            <tr class="text-center">
+            <tr class="info">
                 <th>Mã nhân viên</th>                
                 <th>Họ tên</th>
                 <th>Giới tính</th>
                 <th>Địa chỉ</th>
                 <th>Phòng ban</th>
-                <th>Phòng ban</th>
-                <th>Ngày bắt đầu</th>
+                <th>Vị trí</th>
                 <th>Ngày thôi việc</th>
-                <th>Ghi chú</th>
                 <th>Xem chi tiết</th>
             </tr>
             
@@ -39,9 +37,7 @@
                 <td>${val.user.diachi}</td>
                 <td>${val.user.tenPB}</td>
                 <td>${val.user.tenVT}</td>
-                <td>${val.user.ngayBD}</td>
                 <td>${val.ngay}</td>
-                <td>${val.user.ghichu}</td>
                 <td><a href="thongTinNV?maNV=${val.user.maNV}">Xem</a></td>
             </tr>
             </c:forEach>

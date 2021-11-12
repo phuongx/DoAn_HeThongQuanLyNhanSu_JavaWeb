@@ -13,7 +13,7 @@
     <body>
         <form name="frm1">
             <table class="table table-striped">
-                <tr class="text-center">
+                <tr class="info">
                     <th>#</th>
                     <th>Nội dung công việc</th>
                     <th>Ngày giao</th>

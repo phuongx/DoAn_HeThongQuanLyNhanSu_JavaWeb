@@ -10,7 +10,7 @@
 <html>
     <head>
         <jsp:include page="_htmlHead.jsp"></jsp:include>
-        <title>Giao viec</title>  
+        <title>MP - Giao viec</title>  
         <script>
             var request;
             function TimKiem() {
