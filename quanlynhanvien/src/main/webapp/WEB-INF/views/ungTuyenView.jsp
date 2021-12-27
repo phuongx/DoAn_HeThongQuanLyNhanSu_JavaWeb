@@ -30,45 +30,45 @@
     <c:if test="${quyen=='2'}"><jsp:include page="_headerNhanvien.jsp"></jsp:include></c:if>
     <p style="color:red;">${errorString}</p>
     
-    <form action="${pageContext.request.contextPath}/ungTuyen" method="POST" enctype="multipart/form-data" 
+    <form action="${pageContext.request.contextPath}/ungtuyen" method="POST" enctype="multipart/form-data" 
           class="form-horizontal" name="frmTT">
         <div class="form-group">
-            <label class="control-label col-lg-3" for="hoten">Họ và tên (*)</label>
+            <label class="control-label col-lg-3" for="hoten">Họ và tên *</label>
             <div class="col-lg-6">
                 <input class="form-control" id="hoten" type="text" name="hoten" placeholder="Nhập họ và tên">
             </div>
             <div class="col-lg-3"></div>
         </div>
         <div class="form-group">
-            <label class="control-label col-lg-3" for="sdt">Số điện thoại (*)</label>
+            <label class="control-label col-lg-3" for="sdt">Số điện thoại *</label>
             <div class="col-lg-6">
                 <input class="form-control" id="sdt" type="text" name="sdt" placeholder="Nhập số điện thoại">
             </div>
             <div class="col-lg-3"></div>
         </div>
         <div class="form-group">
-            <label class="control-label col-lg-3" for="email">Email (*)</label>
+            <label class="control-label col-lg-3" for="email">Email *</label>
             <div class="col-lg-6">
                 <input class="form-control" id="email" type="text" name="email" placeholder="Nhập email">
             </div>
             <div class="col-lg-3"></div>
         </div>
         <div class="form-group">
-            <label class="control-label col-lg-3" for="vt">Tên vị trí ứng tuyển (*)</label>
+            <label class="control-label col-lg-3" for="vt">Tên vị trí ứng tuyển *</label>
             <div class="col-lg-6">
                 <input class="form-control" id="vt" type="text" name="tenVT" value="${tin.tenVT}">
             </div>
             <div class="col-lg-3"></div>
         </div>
         <div class="form-group">
-            <label class="control-label col-lg-3" for="pb">Phòng ban ứng tuyển (*)</label>
+            <label class="control-label col-lg-3" for="pb">Phòng ban ứng tuyển *</label>
             <div class="col-lg-6">
                 <input class="form-control" id="vt" type="text" name="tenPB" value="${tin.tenPB}">
             </div>
             <div class="col-lg-3"></div>
         </div>      
         <div class="form-group">
-            <label class="control-label col-lg-3" for="cv">Tải lên CV <i>(.pdf)</i> (*)</label>
+            <label class="control-label col-lg-3" for="cv">Tải lên CV <i>(.pdf, .jpg, .png)</i> *</label>
             <div class="col-lg-6">
                 <input class="form-control" type="file" id="cv" name="cv">
             </div>
@@ -79,7 +79,7 @@
                 <input type="submit" value="Gửi" class="btn btn-primary" onclick="return KiemTra()">
             </div>
             <div class="col-lg-6">
-                <a href="${pageContext.request.contextPath}/danhSachNV"><button type="button" class="btn btn-danger">Hủy</button></a>
+                <a href="${pageContext.request.contextPath}/home"><button type="button" class="btn btn-danger">Hủy</button></a>
             </div>
         </div>
     </form>

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.codec.digest.DigestUtils;
 
 
 public class ChangePasswordServlet extends HttpServlet {
@@ -26,6 +27,7 @@ public class ChangePasswordServlet extends HttpServlet {
         //ktra dang nhap
         HttpSession session = request.getSession();
         UserAccount loginedUser = StorageUtils.getLoginedUser(session);
+        int quyenUser = StorageUtils.getQuyenUser(session);
         String errorString = null;
         
         if (loginedUser == null){
@@ -36,14 +38,7 @@ public class ChangePasswordServlet extends HttpServlet {
             return;
         }
         
-        //ktra quyen: chi  admin moi co quyen truy cap
-        if (loginedUser.getTenVT().equals("Admin") == false ){
-            errorString = "Quyen truy cap that bai.";
-            request.setAttribute("errorString", errorString);
-            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/errorView.jsp");
-            dispatcher.forward(request, response);
-            return;
-        }
+        
         String maNV = request.getParameter("maNV");
         System.out.println("GET " +maNV);
 
@@ -60,26 +55,46 @@ public class ChangePasswordServlet extends HttpServlet {
         
         String errorString = null;
         String maNV = request.getParameter("maNV");
-        String password = request.getParameter("password");
-        
+        String old_pass = request.getParameter("oldpass");
+        String new_pass = request.getParameter("password");
+        String hpass_old = DigestUtils.sha256Hex(old_pass);
+        String hpass = DigestUtils.sha256Hex(new_pass);
         System.out.println("POST "+maNV);
         
         Connection conn = StorageUtils.getStoredConnection(request);
-
-        try{
-            DBUtils.changePassword(conn, maNV, password);
-        } catch (SQLException e){
-            e.printStackTrace();
-            errorString = "Loi du lieu";
-        }
-        if (errorString != null){
-            
+        //ktra
+        HttpSession session = request.getSession();
+        UserAccount loginedUser = StorageUtils.getLoginedUser(session);
+        int quyenUser = StorageUtils.getQuyenUser(session);
+        if (maNV.equals(loginedUser.getMaNV())==false){
+            errorString = "Yêu cầu bị từ chối.";
             request.setAttribute("errorString", errorString);
-            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/editTTNVView.jsp");
-            dispatcher.forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/views/errorView.jsp").forward(request, response);
             return;
         }
-        
+        if (quyenUser == 2 && maNV.equals(loginedUser.getMaNV())){
+            try{
+               UserAccount user = DBUtils.findUser(conn, maNV, hpass_old);
+               if (user == null){
+                   errorString = "Mật khẩu cũ không đúng.";
+               }       
+            } catch (SQLException e){
+                e.printStackTrace();
+                errorString = "Lỗi dữ liệu.";
+            }
+        }
+        if (errorString != null){
+            request.setAttribute("errorString", errorString);
+            request.setAttribute("user", loginedUser);
+            request.getRequestDispatcher("/WEB-INF/views/editTTNVView.jsp").forward(request, response);
+            return;
+        }
+        try{
+            DBUtils.changePassword(conn, maNV, hpass);
+         } catch (SQLException e){
+             e.printStackTrace();
+             errorString = "Lỗi dữ liệu.";
+         }
         //neu khong co loi
         String thongbao = "Thay đổi mật khẩu thành công.";
         request.setAttribute("thongbao", thongbao);

@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
  
                 if (user == null) {
                     hasError = true;
-                    errorString = "Tên đăng nhập và mật khẩu không hợp lệ!";
+                    errorString = "Thông tin đăng nhập sai!";
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -105,7 +105,7 @@ public class LoginServlet extends HttpServlet {
                 }
                 request.setAttribute("user", user);
                 // Redirect (Chuyển hướng) sang trang /viecDuocGiao.
-                response.sendRedirect(request.getContextPath() + "/viecDuocGiao");
+                response.sendRedirect(request.getContextPath() + "/nv/thongtin?maNV="+user.getMaNV());
  
         }
     }

@@ -16,7 +16,7 @@
             var request;
             function TimTheoTen(ten) {
                 var col_name = document.frmTK.col_name.value;
-                var url = "${pageContext.request.contextPath}/timtintd?ten=" + ten +"&col_name="+col_name;
+                var url = "${pageContext.request.contextPath}/tintuyendung/tim?ten=" + ten +"&col_name="+col_name;
 
                 if (window.XMLHttpRequest) {
                     request = new XMLHttpRequest();
@@ -85,8 +85,8 @@
                     <td>${values.ngayBD}</td>
                     <td>${values.ngayKT}</td>
 
-                    <td class="text-center"><a href="#">Sửa</a></td>
-                    <td class="text-center"><a href="#">Xóa</a></td>
+                    <td class="text-center"><a href="${pageContext.request.contextPath}/tintuyendung/edit?id=${values.maTin}">Sửa</a></td>
+                    <td class="text-center"><a href="${pageContext.request.contextPath}/tintuyendung/delete?id=${values.maTin}">Xóa</a></td>
                 </tr>
             </c:forEach>
             </table>

@@ -46,9 +46,9 @@
 
         <p style="color:red;">${errorString}</p>
         
-        <form action="${pageContext.request.contextPath}/addNV" method="POST" class="form-horizontal" name="frmTT">
+        <form action="${pageContext.request.contextPath}/nv/add" method="POST" class="form-horizontal" name="frmTT">
             <div class="form-group">
-                <label class="control-label col-lg-3" for="manv">Mã nhân viên (*)</label>
+                <label class="control-label col-lg-3" for="manv">Mã nhân viên *</label>
                 <div class="col-lg-6">
                     <input class="form-control" id="manv" type="text" name="maNV" value="${maNV}">
                 </div>
@@ -56,7 +56,7 @@
             </div>
                 
             <div class="form-group">
-                <label class="control-label col-lg-3" for="pass">Mật khẩu (*)</label>
+                <label class="control-label col-lg-3" for="pass">Mật khẩu *</label>
                 <div class="col-lg-6">
                     <input class="form-control" id="pass" type="password"  name="password" placeholder="Nhập mật khẩu">
                 </div>
@@ -64,7 +64,7 @@
             </div>
                 
             <div class="form-group">
-                <label class="control-label col-lg-3" for="re-pass">Nhập lại mật khẩu (*)</label>
+                <label class="control-label col-lg-3" for="re-pass">Nhập lại mật khẩu *</label>
                 <div class="col-lg-6">
                     <input class="form-control" id="re-pass" type="password"  name="repassword" placeholder="Nhập lại mật khẩu">
                 </div>
@@ -72,7 +72,7 @@
             </div>    
                 
             <div class="form-group">
-                <label class="control-label col-lg-3" for="hoten">Họ và tên (*)</label>
+                <label class="control-label col-lg-3" for="hoten">Họ và tên *</label>
                 <div class="col-lg-6">
                     <input class="form-control" id="hoten" type="text" name="hoten" placeholder="Nhập họ và tên">
                 </div>
@@ -80,7 +80,7 @@
             </div>
             
             <div class="form-group">
-                <label class="control-label col-lg-3" for="cmnd">CMND/CCCD (*)</label>
+                <label class="control-label col-lg-3" for="cmnd">CMND/CCCD *</label>
                 <div class="col-lg-6">
                     <input class="form-control" id="cmnd" type="text" name="cmnd" placeholder="Nhập CMND/CCCD">
                 </div>
@@ -88,28 +88,28 @@
             </div>
                 
             <div class="form-group">
-                <label class="control-label col-lg-3" for="email">Email (*)</label>
+                <label class="control-label col-lg-3" for="email">Email *</label>
                 <div class="col-lg-6">
                     <input class="form-control" id="email" type="text" name="email" placeholder="Nhập email">
                 </div>
                 <div class="col-lg-3"></div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-3" for="sdt">Số điện thoại (*)</label>
+                <label class="control-label col-lg-3" for="sdt">Số điện thoại *</label>
                 <div class="col-lg-6">
                     <input class="form-control" id="sdt" type="text" name="sdt" placeholder="Nhập số điện thoại">
                 </div>
                 <div class="col-lg-3"></div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-3" for="ns">Ngày sinh (*)</label>
+                <label class="control-label col-lg-3" for="ns">Ngày sinh *</label>
                 <div class="col-lg-6">
                     <input class="form-control" id="ns" type="text" name="ngaysinh" placeholder="yyyy-mm-dd">
                 </div>
                 <div class="col-lg-3"></div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-3" for="gt">Giới tính (*)</label>
+                <label class="control-label col-lg-3" for="gt">Giới tính *</label>
                 <div class="col-lg-6">
                     <input class="form-control" id="gt" type="text" name="gioitinh" placeholder="Nam/Nu">
                 </div>
@@ -117,7 +117,7 @@
             </div>
                 
             <div class="form-group">
-                <label class="control-label col-lg-3" for="dc">Địa chỉ (*)</label>
+                <label class="control-label col-lg-3" for="dc">Địa chỉ *</label>
                 <div class="col-lg-6">
                     <input class="form-control" id="dc" type="text" name="diachi" placeholder="Nhập địa chỉ">
                 </div>
@@ -125,7 +125,7 @@
             </div> 
                 
             <div class="form-group">
-                <label class="control-label col-lg-3" for="pb">Phòng ban (*)</label>
+                <label class="control-label col-lg-3" for="pb">Phòng ban *</label>
                 <div class="col-lg-6">
                     <select class="form-control" id="pb" name="tenPB">
                         <c:forEach items="${listPB}" var="values">
@@ -137,7 +137,7 @@
             </div>
                 
             <div class="form-group">
-                <label class="control-label col-lg-3" for="vt">Vị trí việc làm (*)</label>
+                <label class="control-label col-lg-3" for="vt">Vị trí việc làm *</label>
                 <div class="col-lg-6">
                     <select class="form-control" id="vt" name="tenVT">
                         <c:forEach items="${listVT}" var="values">

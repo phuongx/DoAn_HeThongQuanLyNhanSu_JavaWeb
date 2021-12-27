@@ -31,10 +31,10 @@
         <jsp:include page="_header.jsp"></jsp:include>
         <p style="color:red;">${errorString}</p>
         
-        <form method="post" action="${pageContext.request.contextPath}/dangTinTuyenDung" class="form-horizontal" name="frmTT">
+        <form method="post" action="${pageContext.request.contextPath}/tintuyendung/add" class="form-horizontal" name="frmTT">
             
             <div class="form-group">
-                <label class="control-label col-lg-3" for="pb">Phòng ban (*)</label>
+                <label class="control-label col-lg-3" for="pb">Phòng ban *</label>
                 <div class="col-lg-6">
                     <select class="form-control" id="pb" name="tenPB">
                         <c:forEach items="${listPB}" var="values">
@@ -45,40 +45,36 @@
                 <div class="col-lg-3"></div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-3" for="vt">Vị trí việc làm (*)</label>
+                <label class="control-label col-lg-3" for="vt">Vị trí việc làm *</label>
                 <div class="col-lg-6">
-                    <select class="form-control" id="vt" name="tenVT">
-                        <c:forEach items="${listVT}" var="values">
-                            <option value="${values.tenVT}">${values.maVT}-${values.tenVT}</option>
-                        </c:forEach>
-                    </select>
+                    <input type="text" class="form-control" id="vt" name="tenVT" placeholder="Nhập Vị trí việc làm">
                 </div>
                 <div class="col-lg-3"></div>
             </div>
              
             <div class="form-group">
-                <label class="control-label col-lg-3" for="soluong">Số lượng (*)</label>
+                <label class="control-label col-lg-3" for="soluong">Số lượng *</label>
                 <div class="col-lg-6">
                   <input type="text" class="form-control" id="soluong" name="soluong" placeholder="Nhập số lượng">
                 </div>
                 <div class="col-lg-3"></div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-3" for="mt">Mô tả ngắn gọn (*)</label>
+                <label class="control-label col-lg-3" for="mt">Mô tả ngắn gọn *</label>
                 <div class="col-lg-6">
                     <textarea class="form-control" rows="5" cols="30" id="mt" name="mota"></textarea>
                 </div>
                 <div class="col-lg-3"></div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-3" for="ngaybd">Ngày bắt đầu (*)</label>
+                <label class="control-label col-lg-3" for="ngaybd">Ngày bắt đầu *</label>
                 <div class="col-lg-6">
                     <input class="form-control" id="ngaybd" type="text" name="ngayBD" placeholder="yyyy-mm-dd">
                 </div>
                 <div class="col-lg-3"></div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-3" for="ngaykt">Ngày kết thúc (*)</label>
+                <label class="control-label col-lg-3" for="ngaykt">Ngày kết thúc *</label>
                 <div class="col-lg-6">
                     <input class="form-control" id="ngaykt" type="text" name="ngayKT" placeholder="yyyy-mm-dd">
                 </div>

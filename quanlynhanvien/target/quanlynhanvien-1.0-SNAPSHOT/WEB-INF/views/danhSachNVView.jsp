@@ -16,13 +16,13 @@
             function check_confirm(maNV) {
                 var name = confirm("Bạn có chắc muốn thêm người này vào danh sách thôi việc?");
                 if (name == true) {
-                    window.location.replace("${pageContext.request.contextPath}/addNVTV?maNV="+maNV);
+                    window.location.replace("${pageContext.request.contextPath}/nvtv/add?maNV="+maNV);
                 } 
             }
             var request;
             function TimTheoTen(ten) {
                 
-                var url = "${pageContext.request.contextPath}/timTheoTen?ten=" + ten;
+                var url = "${pageContext.request.contextPath}/timtheoten?ten=" + ten;
 
                 if (window.XMLHttpRequest) {
                     request = new XMLHttpRequest();
@@ -49,62 +49,63 @@
     </head>
     <body>
         <jsp:include page="_header.jsp"></jsp:include>
+        
         <p style="color: red;">${errorString}</p>
         
-    <form name="TK">
-        <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="form-group col-lg-4" >
-            <input class="form-control" type="text" name ="ten" onkeyup="TimTheoTen(this.value)" placeholder="Nhập họ tên để tìm kiếm">
-        </div>
-        <div class="col-lg-4"></div>
-        </div>
-    </form>
-    <div id="result">
-        <p>Danh sách này có <b style="color:blue">${sodong}</b> dòng.</p>
-    <form name="frm2">
-        <table class="table table-striped " >
-            <tr class="info">
-                <th>Mã nhân viên</th>                
-                <th>Họ tên</th>
-                <th>Email</th>
-                <th>Số điện thoại</th>
-                <th>Giới tính</th>
-                <th>Phòng ban</th>
-                <th>Vị trí</th>
-                <th>Xem chi tiết</th>
-                <th>Chỉnh sửa</th>
-                <th>Thêm thành tích</th>
-                <th>Thêm vi phạm</th>
-                <th>Thôi việc</th>  
-            </tr>
-        <c:forEach items="${list}" var="values">
-            <tr>
-                <input type="hidden" name="maNV${values.maNV}" value="${values.maNV}">
-                <td>${values.maNV}</td>
-                <td>${values.hoten}</td>
-                <td>${values.email}</td>
-                <td>${values.sdt}</td>
-                <td>${values.gioitinh}</td>
-                <td>${values.tenPB}</td>
-                <td>${values.tenVT}</td>
-                
-                <td class="text-center"><a href="thongTinNV?maNV=${values.maNV}">Xem</a></td>
-                <td class="text-center"><a href="editTTNV?maNV=${values.maNV}">Sửa</a></td>
-                <td class="text-center"><a href="addThanhTich?maNV=${values.maNV}">Thêm</a></td>
-                <td class="text-center"><a href="addViPham?maNV=${values.maNV}">Thêm</a></td>  
-                <td class="text-center"><input type="button" class="btn btn-danger" value="Đánh dấu" onclick="check_confirm(maNV${values.maNV}.value)"></td>
-                <c:if test="${values.tenTT=='Thoi viec'}">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </c:if>
-            </tr>
-        </c:forEach>
-        </table>
-    </form>
-    </div> 
+        <form name="TK">
+            <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="form-group col-lg-4" >
+                <input class="form-control" type="text" name ="ten" onkeyup="TimTheoTen(this.value)" placeholder="Nhập họ tên để tìm kiếm">
+            </div>
+            <div class="col-lg-4"></div>
+            </div>
+        </form>
+        <div id="result">
+            <p>Danh sách này có <b style="color:blue">${sodong}</b> dòng.</p>
+        <form name="frm2">
+            <table class="table table-striped " >
+                <tr class="info">
+                    <th>Mã nhân viên</th>                
+                    <th>Họ tên</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Giới tính</th>
+                    <th>Phòng ban</th>
+                    <th>Vị trí</th>
+                    <th>Xem chi tiết</th>
+                    <th>Chỉnh sửa</th>
+                    <th>Thêm thành tích</th>
+                    <th>Thêm vi phạm</th>
+                    <th>Thôi việc</th>  
+                </tr>
+            <c:forEach items="${list}" var="values">
+                <tr>
+                    <input type="hidden" name="maNV${values.maNV}" value="${values.maNV}">
+                    <td>${values.maNV}</td>
+                    <td>${values.hoten}</td>
+                    <td>${values.email}</td>
+                    <td>${values.sdt}</td>
+                    <td>${values.gioitinh}</td>
+                    <td>${values.tenPB}</td>
+                    <td>${values.tenVT}</td>
+
+                    <td class="text-center"><a href="${pageContext.request.contextPath}/nv/thongtin?maNV=${values.maNV}">Xem</a></td>
+                    <td class="text-center"><a href="${pageContext.request.contextPath}/nv/edit?maNV=${values.maNV}">Sửa</a></td>
+                    <td class="text-center"><a href="${pageContext.request.contextPath}/nv/thanhtich/add?maNV=${values.maNV}">Thêm</a></td>
+                    <td class="text-center"><a href="${pageContext.request.contextPath}/nv/vipham/add?maNV=${values.maNV}">Thêm</a></td>  
+                    <td class="text-center"><input type="button" class="btn btn-danger" value="Đánh dấu" onclick="check_confirm(maNV${values.maNV}.value)"></td>
+                    <c:if test="${values.tenTT=='Thoi viec'}">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </c:if>
+                </tr>
+            </c:forEach>
+            </table>
+        </form>
+        </div> 
        <jsp:include page="_footer.jsp"></jsp:include>
     </body>
 </html>

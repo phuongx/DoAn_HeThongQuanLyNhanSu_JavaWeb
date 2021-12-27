@@ -122,12 +122,12 @@ public class AddNVServlet extends HttpServlet {
         }
         if (errorString != null){
             
-            response.sendRedirect(request.getContextPath()+"/addNV?errorString="+errorString);
+            response.sendRedirect(request.getContextPath()+"/nv/add?errorString="+errorString);
             return;
         }
         //neu khong co loi
         request.setAttribute("errorString", errorString);
-        response.sendRedirect(request.getContextPath()+"/thongTinNV?maNV="+maNV);
+        response.sendRedirect(request.getContextPath()+"/nv/thongtin?maNV="+maNV);
 
     }
 }

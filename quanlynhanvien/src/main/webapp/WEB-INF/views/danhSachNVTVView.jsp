@@ -38,7 +38,7 @@
                 <td>${val.user.tenPB}</td>
                 <td>${val.user.tenVT}</td>
                 <td>${val.ngay}</td>
-                <td><a href="thongTinNV?maNV=${val.user.maNV}">Xem</a></td>
+                <td><a href="${pageContext.request.contextPath}/nv/thongtin?maNV=${val.user.maNV}">Xem</a></td>
             </tr>
             </c:forEach>
             

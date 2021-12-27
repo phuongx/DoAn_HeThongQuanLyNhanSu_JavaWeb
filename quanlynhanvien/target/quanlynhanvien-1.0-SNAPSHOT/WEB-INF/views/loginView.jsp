@@ -11,7 +11,7 @@
 <html>
   <head>
      <jsp:include page="_htmlHead.jsp"></jsp:include>
-     <title>MP - Trang đăng nhập</title>
+     <title>Login</title>
   </head>
   <body>
  
@@ -23,7 +23,7 @@
   
       <p style="color: red;">${errorString}</p>
       <br>
-    <form class="form-horizontal" action="${pageContext.request.contextPath}/login" method="POST" >
+      <form class="form-horizontal" action="${pageContext.request.contextPath}/login" method="POST" style="background-color: lightgrey;" >
         <br>
       <div class="form-group">
         <label class="control-label col-lg-4" for="manv">Mã nhân viên</label>
@@ -51,6 +51,7 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </div>
+        <br>
     </form>  
  
     <jsp:include page="_footer.jsp"></jsp:include>

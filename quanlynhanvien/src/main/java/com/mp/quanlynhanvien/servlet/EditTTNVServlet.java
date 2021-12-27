@@ -41,8 +41,9 @@ public class EditTTNVServlet extends HttpServlet {
             return;
         }
         //xu ly
-        //ktra quyen: chi co admin
-        if (quyenUser == 2 ){
+        String maNV = request.getParameter("maNV");
+        //ktra quyen: 
+        if (loginedUser.getMaNV().equals(maNV)==false && quyenUser!=1){
             errorString = "Quyen truy cap that bai.";
             request.setAttribute("errorString", errorString);
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/errorView.jsp");
@@ -50,7 +51,7 @@ public class EditTTNVServlet extends HttpServlet {
             return;
         }
         
-        String maNV = request.getParameter("maNV");
+        
         Connection conn = StorageUtils.getStoredConnection(request);
         UserAccount userUpdate = new UserAccount();
         
@@ -62,7 +63,7 @@ public class EditTTNVServlet extends HttpServlet {
         }
         if (userUpdate == null){
             errorString = "Nguoi dung khong ton tai";
-            response.sendRedirect(request.getContextPath()+"/danhSachNV");
+            response.sendRedirect(request.getContextPath()+"/nv/list");
             return;
         }
         
@@ -127,7 +128,7 @@ public class EditTTNVServlet extends HttpServlet {
         request.setAttribute("user", user);
         request.setAttribute("errorString",errorString);
         if (errorString == null){
-            response.sendRedirect(request.getContextPath()+"/thongTinNV?maNV="+maNV);
+            response.sendRedirect(request.getContextPath()+"/nv/thongtin?maNV="+maNV);
         } else {
             RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/editTTNVView.jsp");
             dispatcher.forward(request, response);

@@ -26,8 +26,7 @@
     <body>
         <jsp:include page="_header.jsp"></jsp:include>
         <p style="color:red;">${errorString}</p>
-        <p><i style="color: red">Lưu ý: Cần điền đầy đủ các trường thông tin (*) bên dưới.</i></p>
-        <form class="form-horizontal" action="${pageContext.request.contextPath}/addViPham" method="POST" name="frmTT">
+        <form class="form-horizontal" action="${pageContext.request.contextPath}/nv/vipham/add" method="POST" name="frmTT">
             <input type="hidden" name="maNV" value="${user.maNV}">
             <div class="form-group">
                 <label class="control-label col-lg-3">Mã nhân viên</label>
@@ -37,7 +36,7 @@
                 <div class="col-lg-3"></div>
             </div>
             <div class="form-group">
-                <label class="control-label col-lg-3" for="nd">Nội dung (*)</label>
+                <label class="control-label col-lg-3" for="nd">Nội dung *</label>
                 <div class="col-lg-6">
                     <textarea class="form-control col-lg-6" rows="5" id="nd" name="noidung"></textarea>
                 </div>
@@ -45,7 +44,7 @@
             </div>
             
             <div class="form-group">
-                <label class="control-label col-lg-3" for="ngay">Ngày quyết định (*)</label>
+                <label class="control-label col-lg-3" for="ngay">Ngày quyết định *</label>
                 <div class="col-lg-6">
                     <input class="form-control" id="ngay" type="text" name="ngay" placeholder="yyyy-mm-dd">
                 </div>
@@ -56,7 +55,7 @@
                     <input type="submit" value="Lưu" class="btn btn-primary" onclick="return KiemTra()">
                 </div>
                 <div class="col-lg-6">
-                    <a href="${pageContext.request.contextPath}/danhSachNV"><button type="button" class="btn btn-default">Hủy</button></a>
+                    <a href="${pageContext.request.contextPath}/nv/list"><button type="button" class="btn btn-default">Hủy</button></a>
                 </div>
             </div>
         </form>

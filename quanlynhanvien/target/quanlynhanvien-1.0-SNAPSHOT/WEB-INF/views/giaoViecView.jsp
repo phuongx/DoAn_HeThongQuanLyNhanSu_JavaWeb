@@ -16,7 +16,7 @@
             function TimKiem() {
              
                 var maNV = document.frmTK.maNV.value;
-                var url = "${pageContext.request.contextPath}/timNV?maNV=" + maNV;
+                var url = "${pageContext.request.contextPath}/timnv?maNV=" + maNV;
 
                 if (window.XMLHttpRequest) {
                     request = new XMLHttpRequest();
@@ -44,12 +44,11 @@
                 document.getElementById("err").innerHTML="";
             }
             function KiemTra() {
-             
-                var maNV = document.frmGV.maNV.value;
+           
                 var noidung = document.frmGV.noidung.value;
                 var ngayHT = document.frmGV.ngayHT.value;
                 var gioHT = document.frmGV.gioHT.value;
-                if (maNV=="" || noidung=="" || ngayHT=="" || maNV==null || noidung==null || ngayHT==null){
+                if (noidung=="" || ngayHT=="" || noidung==null || ngayHT==null){
                     document.getElementById("thongbao").innerHTML="(*): Các thông tin bắt buộc điền";
                     return false;
                 }
@@ -59,28 +58,45 @@
 
     </head>
     <body>
-         <jsp:include page="_header.jsp"></jsp:include>
+         <c:if test="${quyen=='1'}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+        <c:if test="${quyen=='2'}"><jsp:include page="_headerNhanvien.jsp"></jsp:include></c:if>
         <div id="err" style="color: red;">${errorString}</div>
         <div id="oke" style="color: blue;">${thongbao}</div>
 
-        <form  name="frmTK" class="form-horizontal">
-            <div class="form-group">
-                <div class="col-lg-4"></div>
-                <div class="col-lg-4">
-                    <div class="input-group">
-                        <input class="form-control" type="text" name ="maNV" value="${user.maNV}" onClick="XoaTB()" placeholder="Nhập mã nhân viên">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary" type="button" onclick="TimKiem()"><i class="glyphicon glyphicon-search"></i></button>
-                        </div>
+        <div id="thongbao" style="color: red;"></div>
+           
+            <form action="${pageContext.request.contextPath}/giaoviec" method="POST" name="frmGV" onsubmit="return KiemTra()" class="form-horizontal">
+                
+                <div class="form-group">
+                    <label class="control-label col-lg-4" for="nd">Nội dung công việc (*)</label>
+                    <div class="col-lg-4">
+                        <textarea class="form-control" rows="5" cols="30" id="nd" name="noidung"></textarea>
+                    </div>
+                    <div class="col-lg-4"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-4" for="ngay">Ngày hết hạn (*)</label>
+                    <div class="col-lg-4">
+                        <input class="form-control" id="ngay" type="text" name="ngayHT" placeholder="yyyy-mm-dd">
+                    </div>
+                    <div class="col-lg-4"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-4" for="gio">Giờ hết hạn</label>
+                    <div class="col-lg-4">
+                        <input class="form-control" id="ngay" type="text" name="gioHT" placeholder="hh:mm">
+                    </div>
+                    <div class="col-lg-4"></div>
+                </div>
+                <div class="form-group">        
+                    <div class="col-lg-offset-5 col-lg-1">
+                        <input type="submit" value="Gửi" class="btn btn-primary" onclick="return KiemTra()">
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="${pageContext.request.contextPath}/viec"><button type="button" class="btn btn-default">Hủy</button></a>
                     </div>
                 </div>
-                <div class="col-lg-4"></div>
-            </div>
-        </form>
-           
-        <div id="rs_search">
-            
-        </div>
+            </form>
         
        <jsp:include page="_footer.jsp"></jsp:include>
     </body>

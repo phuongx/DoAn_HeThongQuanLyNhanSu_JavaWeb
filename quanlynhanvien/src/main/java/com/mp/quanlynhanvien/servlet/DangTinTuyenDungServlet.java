@@ -93,7 +93,7 @@ public class DangTinTuyenDungServlet extends HttpServlet {
         }
         String thongbao = "Đã thêm tin thành công.";
         request.setAttribute("thongbao", thongbao);
-        request.getRequestDispatcher("/WEB-INF/views/dangTinTuyenDung.jsp").forward(request, response);
+        response.sendRedirect(request.getContextPath()+"/tuyendung/qly");
     }
 
 }

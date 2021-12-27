@@ -27,27 +27,28 @@
     </script>
 </head>
 <body>
-    <jsp:include page="_header.jsp"></jsp:include>
+    <c:if test="${quyen=='1'}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+    <c:if test="${quyen=='2'}"><jsp:include page="_headerNhanvien.jsp"></jsp:include></c:if>
     <p style="color:red;">${errorString}</p>
     
-    <form action="${pageContext.request.contextPath}/add-hdld" method="POST" enctype="multipart/form-data" 
+    <form action="${pageContext.request.contextPath}/hdld/add" method="POST" enctype="multipart/form-data" 
           class="form-horizontal" name="frmTT">
         <div class="form-group">
-            <label class="control-label col-lg-4" for="ma">Hợp đồng cho nhân viên (*)</label>
+            <label class="control-label col-lg-4" for="ma">Hợp đồng cho nhân viên *</label>
             <div class="col-lg-5">
                 <input class="form-control" id="ma" type="text" name="maNV" placeholder="Nhập mã nhân viên">
             </div>
             <div class="col-lg-3"></div>
         </div>
         <div class="form-group">
-            <label class="control-label col-lg-4" for="ngay">Ngày ký hợp đồng (*)</label>
+            <label class="control-label col-lg-4" for="ngay">Ngày ký hợp đồng *</label>
             <div class="col-lg-5">
                 <input class="form-control" id="ngay" type="text" name="ngayKy" placeholder="yyyy-mm-dd">
             </div>
             <div class="col-lg-3"></div>
         </div>
         <div class="form-group">
-            <label class="control-label col-lg-4" for="ngayhh">Ngày hết hạn hợp đồng (*)</label>
+            <label class="control-label col-lg-4" for="ngayhh">Ngày hết hạn hợp đồng </label>
             <div class="col-lg-5">
                 <input class="form-control" id="ngayhh" type="text" name="ngayHH" placeholder="yyyy-mm-dd">
             </div>
@@ -55,7 +56,7 @@
         </div>
         
         <div class="form-group">
-            <label class="control-label col-lg-4" for="hopdong">Tải lên hợp đồng <i>(.pdf)</i> (*)</label>
+            <label class="control-label col-lg-4" for="hopdong">Tải lên hợp đồng <i>(.pdf, .jpg, .png)</i> *</label>
             <div class="col-lg-5">
                 <input class="form-control" type="file" id="hopdong" name="hopdong">
             </div>
@@ -66,7 +67,7 @@
                 <input type="submit" value="Lưu" class="btn btn-primary" onclick="return KiemTra()">
             </div>
             <div class="col-lg-6">
-                <a href="${pageContext.request.contextPath}/danhSachNV"><button type="button" class="btn btn-danger">Hủy</button></a>
+                <a href="${pageContext.request.contextPath}/hopdonglaodong"><button type="button" class="btn btn-danger">Hủy</button></a>
             </div>
         </div>
     </form>

@@ -112,7 +112,7 @@ public class AddViPhamServlet extends HttpServlet {
        
         //neu khong co loi
         request.setAttribute("errorString", errorString);
-        response.sendRedirect(request.getContextPath()+"/thongTinNV?maNV="+maNV);
+        response.sendRedirect(request.getContextPath()+"/nv/thongtin?maNV="+maNV);
     }
 
 }

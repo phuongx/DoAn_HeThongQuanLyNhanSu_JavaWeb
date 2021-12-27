@@ -37,8 +37,8 @@
                     <td>${values.ngayBD}</td>
                     <td>${values.ngayKT}</td>
 
-                    <td class="text-center"><a href="#">Sửa</a></td>
-                    <td class="text-center"><a href="#">Xóa</a></td>
+                    <td class="text-center"><a href="${pageContext.request.contextPath}/tintuyendung/edit?id=${values.maTin}">Sửa</a></td>
+                    <td class="text-center"><a href="${pageContext.request.contextPath}/tintuyendung/delete?id=${values.maTin}">Xóa</a></td>
                 </tr>
             </c:forEach>
             </table>

@@ -44,7 +44,7 @@
     <body>
         <jsp:include page="_header.jsp"></jsp:include>
         <p style="color: red;">${errorString}</p>
-        <a href="${pageContext.request.contextPath}/add-hdld" ><input type="button" value="Thêm mới" class="btn btn-primary"></a>
+        <a href="${pageContext.request.contextPath}/hdld/add" ><input type="button" value="Thêm mới" class="btn btn-primary"></a>
     <form name="TK">
         <div class="row">
         <div class="col-lg-4"></div>

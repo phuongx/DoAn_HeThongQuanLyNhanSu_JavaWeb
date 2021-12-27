@@ -69,7 +69,9 @@ public class DuyetHSUTServlet extends HttpServlet {
             e.printStackTrace();
             errorString = "Yêu cầu không hợp lệ.";
         }
-        response.sendRedirect(request.getContextPath()+"/dsHSUT");
+        if (ketqua.equals("Pass"))
+            response.sendRedirect(request.getContextPath()+"/nv/add");
+        else response.sendRedirect(request.getContextPath()+"/hsut/list");
     }
 
 }

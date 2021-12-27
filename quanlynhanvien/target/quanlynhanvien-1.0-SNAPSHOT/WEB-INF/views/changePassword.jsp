@@ -13,7 +13,7 @@
     </head>
     <body>
         <p style="color:red;">${errorString}</p>
-        <form method="post" action="${pageContext.request.contextPath}/changePassword" class="form-horizontal" name="frmPW">
+        <form method="post" action="${pageContext.request.contextPath}/password/change" class="form-horizontal" name="frmPW">
             <input type="hidden" name="maNV" value="${maNV}"/>
             <div class="form-group">
                 <label class="control-label col-lg-3">Mã nhân viên</label>
@@ -22,6 +22,13 @@
                 </div>
                 <div class="col-lg-3"></div>
             </div>
+            <div class="form-group">
+                <label class="control-label col-lg-3" for="oldpass">Mật khẩu hiện tại</label>
+                <div class="col-lg-6">
+                  <input type="password" class="form-control" id="oldpass" name="oldpass" placeholder="Nhập mật khẩu mới">
+                </div>
+                <div class="col-lg-3"></div>
+             </div>
             <div class="form-group">
                 <label class="control-label col-lg-3" for="password">Mật khẩu mới</label>
                 <div class="col-lg-6">
@@ -41,7 +48,7 @@
                     <input type="submit" value="Lưu" class="btn btn-primary" onclick="return KiemTraPW()">
                 </div>
                 <div class="col-lg-6">
-                    <a href="${pageContext.request.contextPath}/editTTNV"><button type="button" class="btn btn-default">Hủy</button></a>
+                    <a href="${pageContext.request.contextPath}/nv/edit"><button type="button" class="btn btn-default">Hủy</button></a>
                 </div>
             </div>
         </form>

@@ -130,6 +130,7 @@ public class UngTuyenServlet extends HttpServlet {
                String clientFileName = s.substring(s.indexOf("=") + 2, s.length() - 1);
                clientFileName = clientFileName.replace("\\", "/");
                int i = clientFileName.lastIndexOf('/');
+               System.out.println(clientFileName);
                // file1.zip
                // file2.zip
                int j  = clientFileName.lastIndexOf('.');

@@ -15,7 +15,7 @@
         
         <h3>Thêm danh mục Chức vụ</h3>
         <p style="color:red;">${errorString}</p>
-        <form method="post" action="${pageContext.request.contextPath}/addchucvu" class="form-horizontal"
+        <form method="post" action="${pageContext.request.contextPath}/chucvu/add" class="form-horizontal"
               name="frmAdd">
             <div class="form-group">
                 <label class="control-label col-lg-3" for="mavt">Mã chức vụ</label>

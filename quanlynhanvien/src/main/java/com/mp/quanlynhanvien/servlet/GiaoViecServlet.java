@@ -41,15 +41,7 @@ public class GiaoViecServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/views/loginView.jsp").forward(request, response);
             return;
         }
-        
-        //ktra quyen: chi  quan ly moi co quyen truy cap
-        if (loginedUser.getTenVT().equals("Quan ly") == false && loginedUser.getTenVT().equals("Admin") == false ){
-            errorString = "Quyen truy cap that bai.";
-            request.setAttribute("errorString", errorString);
-            RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/errorView.jsp");
-            dispatcher.forward(request, response);
-            return;
-        }
+
         request.getRequestDispatcher("/WEB-INF/views/giaoViecView.jsp").forward(request, response);
     }
     
@@ -57,9 +49,11 @@ public class GiaoViecServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        
+        //ktra dang nhap
+        HttpSession session = request.getSession();
+        UserAccount loginedUser = StorageUtils.getLoginedUser(session);
         String errorString = null;
-        String maNV = request.getParameter("maNV");
+        String maNV = loginedUser.getMaNV();
         String noidung = request.getParameter("noidung");
         String ngayHT = request.getParameter("ngayHT");
         String gioHT = request.getParameter("gioHT");
@@ -84,12 +78,13 @@ public class GiaoViecServlet extends HttpServlet {
         }
         if (errorString != null){
             request.setAttribute("errorString", errorString);
+            
             request.getRequestDispatcher("/WEB-INF/views/giaoViecView.jsp").forward(request, response);
             return;
         }
         request.setAttribute("congviec", cv);
         request.setAttribute("thongbao", "Da them thanh cong.");
-        request.getRequestDispatcher("/WEB-INF/views/giaoViecView.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/CongViecView.jsp").forward(request, response);
     }
 
 }

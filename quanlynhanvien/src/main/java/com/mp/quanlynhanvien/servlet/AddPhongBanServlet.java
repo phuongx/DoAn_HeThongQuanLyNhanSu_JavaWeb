@@ -92,6 +92,6 @@ public class AddPhongBanServlet extends HttpServlet {
         
         //neu khong co loi
         
-        response.sendRedirect(request.getContextPath()+"/dsPhongBan");
+        response.sendRedirect(request.getContextPath()+"/phongban/list");
     }
 }

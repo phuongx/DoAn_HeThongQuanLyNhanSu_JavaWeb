@@ -61,16 +61,16 @@ public class ThongTinNVServlet extends HttpServlet {
                 dispatcher.forward(request, response);
                 return;
             }
-            
-            // kiem tra quyen truy cap
-            if (loginedUser.getTenVT().equals("Admin") == false &&  
-                    loginedUser.getMaNV().equals(user.getMaNV()) == false){
-                errorString = "Quyen truy cap that bai.";
+            //ktra quyen: chi co admin
+            int quyenUser = StorageUtils.getQuyenUser(session);
+            if (quyenUser == 2 && loginedUser.getMaNV().equals(user.getMaNV()) == false ){
+                errorString = "Quyền truy cập thất bại..";
                 request.setAttribute("errorString", errorString);
                 RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/views/errorView.jsp");
                 dispatcher.forward(request, response);
                 return;
             }
+            
             thanhtich = DBUtils.findThanhTich(conn, maNV);
             vipham = DBUtils.findViPham(conn, maNV);
         } catch (SQLException e){

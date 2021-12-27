@@ -18,7 +18,7 @@
         <jsp:include page="_header.jsp"></jsp:include>
         <p style="color: red;">${errorString}</p>
         <p>Danh sách này có <b style="color:blue">${sodong}</b> dòng</p>
-        <p><a href="#">Tải xuống danh sách</a></p>
+        <p><a href="${pageContext.request.contextPath}/unknown" target="_blank">Tải xuống danh sách</a></p>
     <table class="table table-striped table-bordered" >
         <tr class="info">
             <th>Mã nhân viên</th>                

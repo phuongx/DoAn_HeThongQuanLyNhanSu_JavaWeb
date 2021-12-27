@@ -18,7 +18,7 @@
                         $('#buttonClickMe').click(function() {
                                 $.ajax({
                                         type : 'GET',
-                                        url : '${pageContext.request.contextPath }/addtrinhdongoaingu',
+                                        url : '${pageContext.request.contextPath }/trinhdongoaingu/add',
                                         success : function(result) {
                                                 $('#result').html(result);
                                         }
@@ -40,24 +40,27 @@
         </script>
     </head>
     <body>
-        <jsp:include page="_header.jsp"></jsp:include>
+        <c:if test="${quyen=='1'}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+        <c:if test="${quyen=='2'}"><jsp:include page="_headerNhanvien.jsp"></jsp:include></c:if>
         <div class="row">
             <div class="col-lg-2"></div>
             <div class="col-lg-8">
                 <p style="color: red;">${errorString}</p>
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="${pageContext.request.contextPath}/chucvu">Danh mục Trình độ ngoại ngữ</a></li>
+                    <li class="active"><a href="${pageContext.request.contextPath}/trinhdongoaingu/list">Danh mục Trình độ ngoại ngữ</a></li>
                     <li><c:if test="${quyen=='1'}">
                         <input type="button" value="Thêm mới" id="buttonClickMe" class="btn btn-primary">
                         </c:if></li>
                 </ul>
                 <br>
                 <p>Danh sách này có <b style="color:blue">${sodong}</b> dòng.</p>
-                <table class="table table-striped table-bordered">
+                <table class="table table-striped">
                     <tr class=" info">
                         <th class="text-center">Mã trình độ</th>   
                         <th>Ngôn ngữ</th> 
                         <th>Tên trình độ</th>
+                        <th></th>
+                        <th></th>
                     </tr>
 
                 <c:forEach items="${list}" var="values">
@@ -65,7 +68,8 @@
                         <td class="text-center">${values.ma}</td>
                         <td>${values.ngonngu}</td>
                         <td>${values.ten}</td>
-
+                        <td><a href="${pageContext.request.contextPath}/unknown" target="_blank">Sửa</a></td>
+                        <td><a href="${pageContext.request.contextPath}/unknown" target="_blank">Xóa</a></td>
                     </tr>
                 </c:forEach>
                 </table>

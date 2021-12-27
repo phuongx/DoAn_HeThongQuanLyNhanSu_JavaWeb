@@ -44,7 +44,7 @@
             function ChangePass() {
                 var maNV = document.frmTT.maNV.value;
                 
-                var url = "${pageContext.request.contextPath}/changePassword?maNV="+maNV;
+                var url = "${pageContext.request.contextPath}/password/change?maNV="+maNV;
 
                 if (window.XMLHttpRequest) {
                     request = new XMLHttpRequest();
@@ -66,26 +66,30 @@
                     document.getElementById('result').innerHTML = val;
                 }
             }
+            function Thongbao() {
+                alert("Chức năng đang được xây dựng.");
+            }
         </script>
         
     </head>
     <body>
-        <jsp:include page="_header.jsp"></jsp:include>
+        <c:if test="${quyen=='1'}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+        <c:if test="${quyen=='2'}"><jsp:include page="_headerNhanvien.jsp"></jsp:include></c:if>
         <div class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-10">
                 <p style="color: red;">${errorString}</p>
                 
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="${pageContext.request.contextPath}/editTTNV?maNV=${user.maNV}">Chỉnh sửa thông tin</a></li>
-                    <li>_<input type="button" value="Đổi mật khẩu" class="btn btn-primary" onclick="ChangePass()">_</li>
-                    <li><input type="button" value="Thêm trình độ học vấn" class="btn btn-primary" onclick="ChangePass()">_</li>
-                    <li><input type="button" value="Thêm trình độ Ngoại ngữ" class="btn btn-primary" onclick="ChangePass()"></li>
+                    <li class="active"><a href="${pageContext.request.contextPath}/nv/edit?maNV=${user.maNV}">Chỉnh sửa thông tin</a></li>
+                    <li>&ensp;<input type="button" value="Đổi mật khẩu" class="active btn btn-primary" onclick="ChangePass()">&ensp;</li>
+                    <li><input type="button" value="Thêm trình độ học vấn" class="btn btn-primary" onclick="Thongbao()">&ensp;</li>
+                    <li><input type="button" value="Thêm trình độ Ngoại ngữ" class="btn btn-primary" onclick="Thongbao()"></li>
                     
                 </ul>
                 <br>
                 <span id="result">
-            <form action="${pageContext.request.contextPath}/editTTNV" method="POST" class="form-horizontal" name="frmTT">
+            <form action="${pageContext.request.contextPath}/nv/edit" method="POST" class="form-horizontal" name="frmTT">
                 <input type="hidden" name="maNV" value="${user.maNV}"/>
                 <div class="form-group">
                     <label class="control-label col-lg-3">Mã nhân viên</label>
@@ -161,7 +165,7 @@
                         <input type="submit" value="Lưu" class="btn btn-primary" onclick="return KiemTra()">
                     </div>
                     <div class="col-lg-6">
-                        <a href="${pageContext.request.contextPath}/danhSachNV"><button type="button" class="btn btn-default">Hủy</button></a>
+                        <a href="${pageContext.request.contextPath}/nv/list"><button type="button" class="btn btn-default">Hủy</button></a>
                     </div>
                 </div>
 

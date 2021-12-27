@@ -144,12 +144,6 @@ public class UserAccount implements Serializable {
         this.tenVT = tenVT;
     }
 
-    public void setQuyen(int quyen) {
-        this.quyen = quyen;
-    }
-    public int getQuyen(){
-        return quyen;
-    }
     public String getTenTT() {
         return tenTT;
     }
@@ -157,5 +151,10 @@ public class UserAccount implements Serializable {
     public void setTenTT(String tenTT) {
         this.tenTT = tenTT;
     }
-
+    public void setQuyen(int quyen) {
+        this.quyen = quyen;
+    }
+    public int getQuyen(){
+        return quyen;
+    }
 }

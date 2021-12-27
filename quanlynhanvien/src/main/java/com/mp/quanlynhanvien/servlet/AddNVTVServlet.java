@@ -75,7 +75,7 @@ public class AddNVTVServlet extends HttpServlet {
         
         //khong co loi
         
-        response.sendRedirect(request.getContextPath()+"/danhSachNVTV");
+        response.sendRedirect(request.getContextPath()+"/nvtv/list");
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

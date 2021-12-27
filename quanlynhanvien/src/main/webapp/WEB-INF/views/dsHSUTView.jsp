@@ -18,7 +18,7 @@
                 $('#Search').submit(function() {
                     $.ajax({
                         type : 'POST',
-                        url : '${pageContext.request.contextPath }/dsHSUT',
+                        url : '${pageContext.request.contextPath }/hsut/list',
                         success : function(result) {
                                 $('#result').html(result);
                         }
@@ -39,7 +39,7 @@
             }
             function DuyetHSUT(maHS) {
                 
-                var url = "${pageContext.request.contextPath}/duyetHSUT?maHS="+maHS;
+                var url = "${pageContext.request.contextPath}/hsut/duyet?maHS="+maHS;
 
                 if (window.XMLHttpRequest) {
                     request = new XMLHttpRequest();
@@ -115,7 +115,7 @@
                     <td>${values.email}</td>
                     <td>${values.tenVT}</td>
                     <td>${values.tenPB}</td>
-                    <td><a href="file/cv/${values.urlCV}">Xem</a></td>
+                    <td><a href="${pageContext.request.contextPath}/file/cv/${values.urlCV}">Xem</a></td>
                 <c:if test="${trangthai!='Chua duyet'}">
                     <td>${values.ketqua}</td>
                     <td>${values.ngayduyet}</td>

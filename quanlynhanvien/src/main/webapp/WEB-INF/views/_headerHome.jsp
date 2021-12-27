@@ -9,7 +9,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" >
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="#" class="navbar-brand" style="color: lightgrey; font-size: 30px">MP</a>
+            <a href="${pageContext.request.contextPath}/home" class="navbar-brand" style="color: lightgrey; font-size: 30px">MP</a>
         </div>
 
         <ul class="nav navbar-nav">

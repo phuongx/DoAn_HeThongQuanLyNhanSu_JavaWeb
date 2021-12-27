@@ -68,15 +68,15 @@ public class AddHDLDServlet extends HttpServlet {
         String ngayHH = request.getParameter("ngayHH");
         String tenfile = null;
         String fullduongdan = null;
-                
+        if (ngayHH.equals(""))  ngayHH=null;
          // Danh mục các phần đã upload lên .
          Part part = request.getPart("hopdong");
         
         //chi lay ten file
         String fileName = extractFileName(part);
 
-        fullduongdan = "D:/WebApp/quanlynhanvien/src/main/webapp/file/hdld/"+maNV+ "_"+fileName;
-        tenfile = "file/hdld/"+maNV+ "_"+fileName;
+        fullduongdan = "D:/WebApp/quanlynhanvien/src/main/webapp/file/hdlaodong/"+maNV+"_"+fileName;
+        tenfile = "file/hdlaodong/"+maNV+"_"+fileName;
 
         //luu file
         part.write(fullduongdan);
@@ -113,13 +113,15 @@ public class AddHDLDServlet extends HttpServlet {
            if (s.trim().startsWith("filename")) {
                // C:\file1.zip
                // C:\Note\file2.zip
+               
                String clientFileName = s.substring(s.indexOf("=") + 2, s.length() - 1);
                clientFileName = clientFileName.replace("\\", "/");
+               System.out.println(clientFileName);
                int i = clientFileName.lastIndexOf('/');
                // file1.zip
                // file2.zip
                int j  = clientFileName.lastIndexOf('.');
-               return clientFileName.substring(i);
+               return clientFileName;
            }
        }
        return null;

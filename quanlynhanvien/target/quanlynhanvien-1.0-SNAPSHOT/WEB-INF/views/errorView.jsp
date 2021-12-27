@@ -17,7 +17,8 @@
 
 
        <c:if test="${empty loginedUser}"><jsp:include page="_headerHome.jsp"></jsp:include></c:if>
-       <c:if test="${not empty loginedUser}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+       <c:if test="${loginedUser.quyen=='1'}"><jsp:include page="_header.jsp"></jsp:include></c:if>
+        <c:if test="${loginedUser.quyen=='2'}"><jsp:include page="_headerNhanvien.jsp"></jsp:include></c:if>
 
         <div class="alert alert-danger">
             <strong>Rất tiếc!</strong> ${errorString}

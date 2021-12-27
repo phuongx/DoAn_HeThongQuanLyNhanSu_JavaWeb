@@ -12,7 +12,7 @@
         
     </head>
     <body>
-        <form class="form-horizontal" action="${pageContext.request.contextPath}/duyetHSUT" method="POST" name="frmTT">
+        <form class="form-horizontal" action="${pageContext.request.contextPath}/hsut/duyet" method="POST" name="frmTT">
             <input type="hidden" name="maHS" value="${maHS}">
             <div class="form-group">
                 <label class="control-label col-lg-3">Mã hồ sơ</label>
@@ -40,7 +40,7 @@
                     <input type="submit" value="Lưu" class="btn btn-primary" onclick="return KiemTra()">
                 </div>
                 <div class="col-lg-6">
-                    <a href="${pageContext.request.contextPath}/danhSachNV"><button type="button" class="btn btn-default">Hủy</button></a>
+                    <a href="${pageContext.request.contextPath}/hsut/list"><button type="button" class="btn btn-default">Hủy</button></a>
                 </div>
             </div>
         </form>

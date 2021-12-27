@@ -37,10 +37,11 @@ public class DanhDauHT_CVServlet extends HttpServlet {
         }
         if (check = false ) {
             errorString  = "Yêu cầu không hợp lệ.";
+            request.setAttribute("errorString", errorString);
             request.getRequestDispatcher("/WEB-INF/views/errorView.jsp").forward(request, response);
             return;
         }
-        response.sendRedirect(request.getContextPath()+"/dsViecLam");
+        response.sendRedirect(request.getContextPath()+"/viec/list");
 
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

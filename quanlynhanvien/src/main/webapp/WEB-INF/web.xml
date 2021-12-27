@@ -176,12 +176,32 @@
         <servlet-name>TKNhanVienTDHV</servlet-name>
         <servlet-class>com.mp.quanlynhanvien.servlet.TKNhanVienTDHV</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UnknownServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.UnknownServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SuaTinTuyenDungServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.SuaTinTuyenDungServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteTinTuyenDungServlet</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.DeleteTinTuyenDungServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QLQuyen</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.QLQuyen</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ThayDoiQuyen</servlet-name>
+        <servlet-class>com.mp.quanlynhanvien.servlet.ThayDoiQuyen</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>login</welcome-file>
+        <welcome-file>home</welcome-file>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     <servlet-mapping>
@@ -194,87 +214,87 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ThongTinNVServlet</servlet-name>
-        <url-pattern>/thongTinNV</url-pattern>
+        <url-pattern>/nv/thongtin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DanhSachNVServlet</servlet-name>
-        <url-pattern>/danhSachNV</url-pattern>
+        <url-pattern>/nv/list</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddThanhTichServlet</servlet-name>
-        <url-pattern>/addThanhTich</url-pattern>
+        <url-pattern>/nv/thanhtich/add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddViPhamServlet</servlet-name>
-        <url-pattern>/addViPham</url-pattern>
+        <url-pattern>/nv/vipham/add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddNVServlet</servlet-name>
-        <url-pattern>/addNV</url-pattern>
+        <url-pattern>/nv/add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DSPhongBanServlet</servlet-name>
-        <url-pattern>/dsPhongBan</url-pattern>
+        <url-pattern>/phongban/list</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddPhongBanServlet</servlet-name>
-        <url-pattern>/addPhongBan</url-pattern>
+        <url-pattern>/phongban/add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EditTTNVServlet</servlet-name>
-        <url-pattern>/editTTNV</url-pattern>
+        <url-pattern>/nv/edit</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DanhSachNVTVServlet</servlet-name>
-        <url-pattern>/danhSachNVTV</url-pattern>
+        <url-pattern>/nvtv/list</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddNVTVServlet</servlet-name>
-        <url-pattern>/addNVTV</url-pattern>
+        <url-pattern>/nvtv/add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UngTuyenServlet</servlet-name>
-        <url-pattern>/ungTuyen</url-pattern>
+        <url-pattern>/ungtuyen</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DsHSUTServlet</servlet-name>
-        <url-pattern>/dsHSUT</url-pattern>
+        <url-pattern>/hsut/list</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GiaoViecServlet</servlet-name>
-        <url-pattern>/giaoViec</url-pattern>
+        <url-pattern>/giaoviec</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TimNVServlet</servlet-name>
-        <url-pattern>/timNV</url-pattern>
+        <url-pattern>/timnv</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DsViecLamServlet</servlet-name>
-        <url-pattern>/dsViecLam</url-pattern>
+        <url-pattern>/viec/list</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViecDuocGiaoServlet</servlet-name>
-        <url-pattern>/viecDuocGiao</url-pattern>
+        <url-pattern>/viec</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DanhDauHT_CVServlet</servlet-name>
-        <url-pattern>/danhDauHT_CV</url-pattern>
+        <url-pattern>/viec/danhdauhoanthanh</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DuyetHSUT</servlet-name>
-        <url-pattern>/duyetHSUT</url-pattern>
+        <url-pattern>/hsut/duyet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DangTinTuyenDungServlet</servlet-name>
-        <url-pattern>/dangTinTuyenDung</url-pattern>
+        <url-pattern>/tintuyendung/add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>timTheoTenServlet</servlet-name>
-        <url-pattern>/timTheoTen</url-pattern>
+        <url-pattern>/timtheoten</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangePasswordServlet</servlet-name>
-        <url-pattern>/changePassword</url-pattern>
+        <url-pattern>/password/change</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TinTuyenDungServlet</servlet-name>
@@ -286,11 +306,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DSChucVuServlet</servlet-name>
-        <url-pattern>/chucvu</url-pattern>
+        <url-pattern>/chucvu/list</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddChucVuServlet</servlet-name>
-        <url-pattern>/addchucvu</url-pattern>
+        <url-pattern>/chucvu/add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TrinhDoHocVanServlet</servlet-name>
@@ -302,19 +322,19 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddTrinhDoHocVanServlet</servlet-name>
-        <url-pattern>/addtrinhdohocvan</url-pattern>
+        <url-pattern>/trinhdohocvan/add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddTrinhDoNgoaiNguServlet</servlet-name>
-        <url-pattern>/addtrinhdongoaingu</url-pattern>
+        <url-pattern>/trinhdongoaingu/add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>QlyTuyenDungServlet</servlet-name>
-        <url-pattern>/qlytuyendung</url-pattern>
+        <url-pattern>/tuyendung/qly</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TimTinTDServlet</servlet-name>
-        <url-pattern>/timtintd</url-pattern>
+        <url-pattern>/tintuyendung/tim</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DsHopDongLaoDongServlet</servlet-name>
@@ -326,11 +346,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddHDLDServlet</servlet-name>
-        <url-pattern>/add-hdld</url-pattern>
+        <url-pattern>/hdld/add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TKNhanVienPhongBan</servlet-name>
-        <url-pattern>/tk-nv-pb</url-pattern>
+        <url-pattern>/tk/nv-pb</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GetListServlet</servlet-name>
@@ -338,7 +358,27 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TKNhanVienTDHV</servlet-name>
-        <url-pattern>/tk-nv-tdhv</url-pattern>
+        <url-pattern>/tk/nv-tdhv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UnknownServlet</servlet-name>
+        <url-pattern>/unknown</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SuaTinTuyenDungServlet</servlet-name>
+        <url-pattern>/tintuyendung/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteTinTuyenDungServlet</servlet-name>
+        <url-pattern>/tintuyendung/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QLQuyen</servlet-name>
+        <url-pattern>/qlyquyen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ThayDoiQuyen</servlet-name>
+        <url-pattern>/quyen/thaydoi</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -41,10 +41,10 @@
                 <td>${values.tenPB}</td>
                 <td>${values.tenVT}</td>
                 
-                <td class="text-center"><a href="thongTinNV?maNV=${values.maNV}">Xem</a></td>
-                <td class="text-center"><a href="editTTNV?maNV=${values.maNV}">Sửa</a></td>
-                <td class="text-center"><a href="addThanhTich?maNV=${values.maNV}">Thêm</a></td>
-                <td class="text-center"><a href="addViPham?maNV=${values.maNV}">Thêm</a></td>  
+                <td class="text-center"><a href="nv/thongtin?maNV=${values.maNV}">Xem</a></td>
+                <td class="text-center"><a href="nv/edit?maNV=${values.maNV}">Sửa</a></td>
+                <td class="text-center"><a href="nv/thanhtich/add?maNV=${values.maNV}">Thêm</a></td>
+                <td class="text-center"><a href="nv/vipham/add?maNV=${values.maNV}">Thêm</a></td>  
                 <td class="text-center"><input type="button" class="btn btn-danger" value="Đánh dấu" onclick="check_confirm(maNV${values.maNV}.value)"></td>
                 <c:if test="${values.tenTT=='Thoi viec'}">
                     <td></td>

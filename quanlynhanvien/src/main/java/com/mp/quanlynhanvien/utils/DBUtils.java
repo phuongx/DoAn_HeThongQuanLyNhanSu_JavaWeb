@@ -174,6 +174,25 @@ public class DBUtils {
         return list;
         
     }
+    public static List<UserAccount> dsNhanVien(Connection conn, int quyen)throws SQLException{
+        String sql = "Select ma_nv from user_account where ten_tt = 'Hoat dong' and quyen=? order by ma_nv ASC";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, quyen);
+        ResultSet rs = pstm.executeQuery();
+ 
+        List<UserAccount> list = new ArrayList<UserAccount>();
+        
+        while (rs.next()) {
+            String maNV = rs.getString("ma_nv");
+            
+            UserAccount user = findUser(conn,maNV);
+            
+            list.add(user);
+            
+        }
+        return list;
+        
+    }
     public static void insertThanhTich(Connection conn, ThanhTich tt) throws SQLException {
         String sql = "Insert into thanhtich (ma_nv, noidung, ngay)"
                 + " values (?,?,?)";
@@ -511,7 +530,7 @@ public class DBUtils {
         pstm.executeUpdate();
     }
     public static void updateNhanVien(Connection conn, UserAccount user) throws SQLException {
-        String sql = "Update user_account set cmnd=?, email=?, sdt=?,  diachi =?, ten_pb=?, ten_vt=?, "
+        String sql = "Update user_account set cmnd=?, email=?, sdt=?,  diachi =?, ten_pb=?, ten_vt=? "
                 + "  where ma_nv=? ";
  
         PreparedStatement pstm = conn.prepareStatement(sql);
@@ -755,13 +774,35 @@ public class DBUtils {
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, tin.getTenPB());
         pstm.setString(2, tin.gettenVT());
-        pstm.setInt(4, tin.getSoluong());
-        pstm.setString(5, tin.getMota());
-        pstm.setString(6, tin.getNgayBD());
-        pstm.setString(7, tin.getNgayKT());
+        pstm.setInt(3, tin.getSoluong());
+        pstm.setString(4, tin.getMota());
+        pstm.setString(5, tin.getNgayBD());
+        pstm.setString(6, tin.getNgayKT());
         
         pstm.executeUpdate();
 
+    }
+    public static void editTinTuyenDung (Connection conn, TinTuyenDung tin) throws SQLException{
+
+        String sql = "update tin_tuyen_dung set ten_pb= ?, ten_vt=?, so_luong=?,"
+                + " mo_ta=?, ngay_bd=?, ngay_kt=? where ma_tin=?";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, tin.getTenPB());
+        pstm.setString(2, tin.gettenVT());
+        pstm.setInt(3, tin.getSoluong());
+        pstm.setString(4, tin.getMota());
+        pstm.setString(5, tin.getNgayBD());
+        pstm.setString(6, tin.getNgayKT());
+        pstm.setInt(7, tin.getMaTin());
+        pstm.executeUpdate();
+    }
+    public static void deleteTinTuyenDung (Connection conn, TinTuyenDung tin) throws SQLException{
+
+        String sql = "delete from tin_tuyen_dung where ma_tin=?)";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        
+        pstm.setInt(8, tin.getMaTin());
+        pstm.executeUpdate();
     }
     public static void changePassword(Connection conn, String maNV, String newPass) throws SQLException {
         String sql = "Update user_account set password=? where ma_nv=? ";
@@ -871,5 +912,13 @@ public class DBUtils {
             list.add(user);
         }
         return list;
+    }
+    public static void changeQuyen(Connection conn, String maNV, int quyen) throws SQLException {
+        String sql = "Update user_account set quyen=? where ma_nv=? ";
+ 
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, quyen);
+        pstm.setString(2, maNV);
+        pstm.executeUpdate();
     }
 }

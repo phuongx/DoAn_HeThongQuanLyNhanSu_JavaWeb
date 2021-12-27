@@ -15,7 +15,7 @@
         
         <h3>Thêm danh mục Phòng ban</h3>
         <p style="color:red;">${errorString}</p>
-        <form method="post" action="${pageContext.request.contextPath}/addPhongBan" class="form-horizontal"
+        <form method="post" action="${pageContext.request.contextPath}/phongban/add" class="form-horizontal"
               name="frmAdd">
             <div class="form-group">
                 <label class="control-label col-lg-3" for="mapb">Mã phòng ban</label>

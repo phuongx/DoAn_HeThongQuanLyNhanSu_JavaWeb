@@ -16,7 +16,7 @@
             function TimKiem() {
              
                 var status = document.frmTK.status.value;
-                var url = "${pageContext.request.contextPath}/dsViecLam?trangthai="+status;
+                var url = "${pageContext.request.contextPath}/viec/list?trangthai="+status;
 
                 if (window.XMLHttpRequest) {
                     request = new XMLHttpRequest();
@@ -34,7 +34,7 @@
             }
             function DanhDauHT(maCV) {
              
-                var url = "${pageContext.request.contextPath}/danhDauHT_CV?maCV="+maCV;
+                var url = "${pageContext.request.contextPath}/viec/danhdauhoanthanh?maCV="+maCV;
 
                 if (window.XMLHttpRequest) {
                     request = new XMLHttpRequest();
@@ -64,6 +64,7 @@
 
         <c:if test="${quyen=='1'}"><jsp:include page="_header.jsp"></jsp:include></c:if>
         <c:if test="${quyen=='2'}"><jsp:include page="_headerNhanvien.jsp"></jsp:include></c:if>
+        <a href="${pageContext.request.contextPath}/giaoviec">Lên lịch</a>
         <form name="frmTK" class="form-horizontal">
              
             <div class="form-group">
@@ -84,7 +85,7 @@
             
         </form>
         <div id="xemViec">
-        <c:import url="/dsViecLam"/>
+        <c:import url="/viec/list"/>
         </div>
         <jsp:include page="_footer.jsp"></jsp:include>
     </body>

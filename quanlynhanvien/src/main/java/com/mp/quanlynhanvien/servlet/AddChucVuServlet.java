@@ -91,7 +91,7 @@ public class AddChucVuServlet extends HttpServlet {
         
         //neu khong co loi
         
-        response.sendRedirect(request.getContextPath()+"/chucvu");
+        response.sendRedirect(request.getContextPath()+"/chucvu/list");
     }
 
 

@@ -35,7 +35,7 @@
                 
             <div id="thongbao" style="color: red;"></div>
            
-            <form action="${pageContext.request.contextPath}/giaoViec" method="POST" name="frmGV" onsubmit="return KiemTra()" class="form-horizontal">
+            <form action="${pageContext.request.contextPath}/giaoviec" method="POST" name="frmGV" onsubmit="return KiemTra()" class="form-horizontal">
                 <input type="hidden" name="maNV" value="${user.maNV}">
                 <div class="form-group">
                     <label class="control-label col-lg-4" for="nd">Nội dung công việc (*)</label>
@@ -63,7 +63,7 @@
                         <input type="submit" value="Gửi" class="btn btn-primary" onclick="return KiemTra()">
                     </div>
                     <div class="col-lg-6">
-                        <a href="${pageContext.request.contextPath}/giaoViec"><button type="button" class="btn btn-default">Hủy</button></a>
+                        <a href="${pageContext.request.contextPath}/giaoviec"><button type="button" class="btn btn-default">Hủy</button></a>
                     </div>
                 </div>
             </form>

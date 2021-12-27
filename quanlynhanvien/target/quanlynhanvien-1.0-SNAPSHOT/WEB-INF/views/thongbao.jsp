@@ -38,7 +38,7 @@
                                 Mô tả/ Yêu cầu:<br>
                                 ${value.mota}<br>
                                 Thời gian nhận hồ sơ: từ ${value.ngayBD} đến ${value.ngayKT} <br><br>
-                                <a href="${pageContext.request.contextPath}/ungTuyen?id=${value.maTin}">
+                                <a href="${pageContext.request.contextPath}/ungtuyen?id=${value.maTin}">
                                     <input type="button" class="btn btn-success" value="Apply Now"></a>
                             </div>
                         </div>

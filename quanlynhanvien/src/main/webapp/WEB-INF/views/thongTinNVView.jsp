@@ -27,7 +27,7 @@
         </div>
         <div class="col-lg-4">
 
-
+            <p><a href="${pageContext.request.contextPath}/nv/edit?maNV=${user.maNV}">Chỉnh sửa</a></p>
             <table class="table table-striped">
 
                 <tr>

@@ -15,7 +15,7 @@
         
         <h3>Thêm danh mục Trình độ học vấn</h3>
         <p style="color:red;">${errorString}</p>
-        <form method="post" action="${pageContext.request.contextPath}/addtrinhdohocvan" class="form-horizontal"
+        <form method="post" action="${pageContext.request.contextPath}/trinhdohocvan/add" class="form-horizontal"
               name="frmAdd">
             
              <div class="form-group">
